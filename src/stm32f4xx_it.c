@@ -143,6 +143,17 @@ void SysTick_Handler(void)
 /*  TimingDelay_Decrement(); */
 }
 
+
+void TIM2_IRQHandler(){
+	TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+}
+
+// set up yet but might to see if the adc is working
+void ADC_IRQHandler() {
+        /* acknowledge interrupt */
+        ADC_ClearITPendingBit(ADC1, ADC_IT_EOC);
+}
+
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */

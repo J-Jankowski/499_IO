@@ -46,8 +46,8 @@ SOFTWARE.
 */
 
 
-void ADC_IRQHandler();
-void TIM2_IRQHandler();
+volatile uint16_t ADCBuffer[NUM_CHANNELS];
+
 
 int main(void)
 {
@@ -66,11 +66,11 @@ int main(void)
   /**
   *  IMPORTANT NOTE!
   *  The symbol VECT_TAB_SRAM needs to be defined when building the project
-  *  if code has been located to RAM and interrupts are used. 
+  *  if code has been located to RAM and interrupts are used.
   *  Otherwise the interrupt table located in flash will be used.
-  *  See also the <system_*.c> file and how the SystemInit() function updates 
-  *  SCB->VTOR register.  
-  *  E.g.  SCB->VTOR = 0x20000000;  
+  *  See also the <system_*.c> file and how the SystemInit() function updates
+  *  SCB->VTOR register.
+  *  E.g.  SCB->VTOR = 0x20000000;
   */
 
 
@@ -78,35 +78,41 @@ int main(void)
 
   /**************************** Run Initialization functions and start timer************************************/
 
-  init_rcc();					//turn on peripheral busses
-  init_pins();					//initialize pins
-  init_timer2();				//initialize tim2 for ADC conversion pace
-  init_dma();					//initialize DMA for ADC
-  init_adc();					//initialize ADC
 
-  // Initialize variables for ADC conversions
-  volatile uint16_t vfo_amp = ADC1ConvertedValue[0];
-  volatile uint16_t vfo_freq = ADC1ConvertedValue[1];
-  volatile uint16_t lfo_amp = ADC1ConvertedValue[2];
-  volatile uint16_t lfo_freq = ADC1ConvertedValue[3];
-  volatile uint16_t volume = ADC1ConvertedValue[4];
-  volatile uint16_t env_attack = ADC1ConvertedValue[5];
-  volatile uint16_t env_decay = ADC1ConvertedValue[6];
-  volatile uint16_t env_sustain = ADC1ConvertedValue[7];
-  volatile uint16_t env_release = ADC1ConvertedValue[8];
-  volatile uint16_t fc_low = ADC1ConvertedValue[9];
-  volatile uint16_t fc_high = ADC1ConvertedValue[10];
-  volatile uint16_t fc_resonance = ADC1ConvertedValue[11];
-  volatile uint16_t gain = ADC1ConvertedValue[12];
+  init_adc(ADCBuffer);			//initialize ADC
 
 
-  TIM_Cmd(TIM2, ENABLE);		//start timer
 
 
-  int i = 0;
-
-  uint16_t test;
-
+//  // Initialize variables for ADC conversions
+//  volatile uint16_t vfo_amp = ADC1ConvertedValue[0];
+//  volatile uint16_t vfo_freq = ADC1ConvertedValue[1];
+//  volatile uint16_t lfo_amp = ADC1ConvertedValue[2];
+//  volatile uint16_t lfo_freq = ADC1ConvertedValue[3];
+//  volatile uint16_t volume = ADC1ConvertedValue[4];
+//  volatile uint16_t env_attack = ADC1ConvertedValue[5];
+//  volatile uint16_t env_decay = ADC1ConvertedValue[6];
+//  volatile uint16_t env_sustain = ADC1ConvertedValue[7];
+//  volatile uint16_t env_release = ADC1ConvertedValue[8];
+//  volatile uint16_t fc_low = ADC1ConvertedValue[9];
+//  volatile uint16_t fc_high = ADC1ConvertedValue[10];
+//  volatile uint16_t fc_resonance = ADC1ConvertedValue[11];
+//  volatile uint16_t gain = ADC1ConvertedValue[12];
+//
+//
+//  //test registers
+//  uint32_t adc_control_reg1;
+//  uint32_t adc_control_reg2;
+//  uint32_t adc_status_reg;
+//
+//  //TIM_Cmd(TIM2, ENABLE);		//start timer
+//
+//
+ int i = 0;
+ int j = 0;
+//
+//  uint16_t test;
+  uint16_t bufftest[NUM_CHANNELS];
 
   /* Infinite loop */
   while (1)
@@ -114,23 +120,31 @@ int main(void)
 	//  printf("vfo_amp  vfo_freq  lfo_amp  lfo_freq  volume  env_attack  env_decay  env_sustain  env_release  fc_low  fc_high  fc_resonance  gain\n");
 //	printf("   %u       %u        %u	   %u		%u		  %u		 %u			%u			  %u		 %u		  %u		%u			%u\n", (unsigned int)vfo_amp, (unsigned int)vfo_freq, (unsigned int)lfo_amp, (unsigned int)lfo_freq, (unsigned int)volume, (unsigned int)env_attack, (unsigned int)env_decay, (unsigned int)env_sustain, (unsigned int)env_release, (unsigned int)fc_low, (unsigned int)fc_high, (unsigned int)fc_resonance, (unsigned int)gain);
 
-	  test = vfo_amp;
-	  test = vfo_freq;
-	  test = lfo_amp;
-	  test = lfo_freq;
-	  test = volume;
-	  test = env_attack;
-	  test = env_decay;
-	  test = env_sustain;
-	  test = env_release;
-	  test = fc_low;
-	  test = fc_high;
-	  test = fc_resonance;
-	  test = gain;
-
-
+//	  test = vfo_amp;
+//	  test = vfo_freq;
+//	  test = lfo_amp;
+//	  test = lfo_freq;
+//	  test = volume;
+//	  test = env_attack;
+//	  test = env_decay;
+//	  test = env_sustain;
+//	  test = env_release;
+//	  test = fc_low;
+//	  test = fc_high;
+//	  test = fc_resonance;
+//	  test = gain;
+//
+//	  adc_control_reg1 = ADC1->CR1;
+//	  adc_control_reg2 = ADC1->CR2;
+//	  adc_status_reg = ADC1->SR;
+	  bufftest[0] = ADCBuffer[0];
+	  bufftest[1] = ADCBuffer[1];
+	  bufftest[2] = ADCBuffer[2];
+	  bufftest[3] = ADCBuffer[3];
+	  bufftest[4] = ADCBuffer[4];
+	  bufftest[5] = ADCBuffer[5];
 	// Waste some time
-	for (i = 0; i < 5000000; i++){
+	for (j = 0; j < 5000000; j++){
 
 	}
   }
@@ -164,13 +178,4 @@ uint16_t EVAL_AUDIO_GetSampleCallBack(void){
 
 /**********************************************Interrupt handlers**********************************/
 //Not sure if i can keep these in the other files so i put em in the main
-void TIM2_IRQHandler(){
-	TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-}
-
-// set up yet but might to see if the adc is working
-void ADC_IRQHandler() {
-        /* acknowledge interrupt */
-        ADC_ClearITPendingBit(ADC1, ADC_IT_EOC);
-}
 

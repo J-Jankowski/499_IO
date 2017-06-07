@@ -1,5 +1,1 @@
-initial_ization.c:35:6:init_rcc	8	static
-initial_ization.c:53:6:init_timer2	24	static
-initial_ization.c:89:6:init_dma	72	static
-initial_ization.c:123:6:init_pins	16	static
-initial_ization.c:174:6:init_adc	56	static
+initial_ization.c:19:6:init_adc	144	static
