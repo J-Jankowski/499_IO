@@ -1,1 +1,2 @@
-initial_ization.c:19:6:init_adc	144	static
+initial_ization.c:25:6:init_adc	144	static
+initial_ization.c:186:6:init_selector	4	static

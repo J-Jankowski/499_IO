@@ -73,7 +73,20 @@ int main(void)
   *  E.g.  SCB->VTOR = 0x20000000;
   */
 
-
+  /* Used for Testing*/
+  volatile uint16_t vfo_amp = ADCBuffer[0];
+  volatile uint16_t vfo_freq = ADCBuffer[1];
+  volatile uint16_t lfo_amp = ADCBuffer[2];
+  volatile uint16_t lfo_freq = ADCBuffer[3];
+  volatile uint16_t volume = ADCBuffer[4];
+  volatile uint16_t env_attack = ADCBuffer[5];
+  volatile uint16_t env_decay = ADCBuffer[6];
+  volatile uint16_t env_sustain = ADCBuffer[7];
+  volatile  uint16_t env_release = ADCBuffer[8];
+  volatile uint16_t fc_low = ADCBuffer[9];
+  volatile uint16_t fc_high = ADCBuffer[10];
+  volatile uint16_t fc_resonance = ADCBuffer[11];
+  volatile  uint16_t gain = ADCBuffer[12];
 
 
   /**************************** Run Initialization functions timer for tim2 started in init_adc*****************************/
@@ -87,20 +100,7 @@ int main(void)
   {
 
 
-	  /* Used for Testing*/
-	  uint16_t vfo_amp = ADCBuffer[0];
-	  uint16_t vfo_freq = ADCBuffer[1];
-	  uint16_t lfo_amp = ADCBuffer[2];
-	  uint16_t lfo_freq = ADCBuffer[3];
-	  uint16_t volume = ADCBuffer[4];
-	  uint16_t env_attack = ADCBuffer[5];
-	  uint16_t env_decay = ADCBuffer[6];
-	  uint16_t env_sustain = ADCBuffer[7];
-	  uint16_t env_release = ADCBuffer[8];
-	  uint16_t fc_low = ADCBuffer[9];
-	  uint16_t fc_high = ADCBuffer[10];
-	  uint16_t fc_resonance = ADCBuffer[11];
-	  uint16_t gain = ADCBuffer[12];
+
 	  // Waste some time
 	  for (j = 0; j < 5000000; j++){
 	  }

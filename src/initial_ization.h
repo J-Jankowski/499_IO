@@ -18,5 +18,7 @@
 // Initializes ADC pins and Calibrates ADC Do DMA transfer
 void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]);
 
+void init_selector();
+
 
 

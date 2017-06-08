@@ -16,6 +16,12 @@
 
 
 
+
+/*
+ * Initializes the ADC to work in scan mode with 13 channels for pots
+ * Uses DMA to transfer data and a timer to throttle the ADC conversion
+ * The conversion cycle occurs every 75ms this function starts the timer.
+ */
 void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]){
 
 	/* Define ADC init structures */
@@ -165,5 +171,18 @@ void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]){
 
 	TIM_Cmd(TIM2, ENABLE);		//This could be dine in the main however gonna leave it here
 
+
+}
+
+
+
+
+
+
+
+/*
+ *
+*/
+void init_selector(){
 
 }
