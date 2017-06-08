@@ -76,77 +76,36 @@ int main(void)
 
 
 
-  /**************************** Run Initialization functions and start timer************************************/
-
+  /**************************** Run Initialization functions timer for tim2 started in init_adc*****************************/
 
   init_adc(ADCBuffer);			//initialize ADC
-
-
-
-
-//  // Initialize variables for ADC conversions
-//  volatile uint16_t vfo_amp = ADC1ConvertedValue[0];
-//  volatile uint16_t vfo_freq = ADC1ConvertedValue[1];
-//  volatile uint16_t lfo_amp = ADC1ConvertedValue[2];
-//  volatile uint16_t lfo_freq = ADC1ConvertedValue[3];
-//  volatile uint16_t volume = ADC1ConvertedValue[4];
-//  volatile uint16_t env_attack = ADC1ConvertedValue[5];
-//  volatile uint16_t env_decay = ADC1ConvertedValue[6];
-//  volatile uint16_t env_sustain = ADC1ConvertedValue[7];
-//  volatile uint16_t env_release = ADC1ConvertedValue[8];
-//  volatile uint16_t fc_low = ADC1ConvertedValue[9];
-//  volatile uint16_t fc_high = ADC1ConvertedValue[10];
-//  volatile uint16_t fc_resonance = ADC1ConvertedValue[11];
-//  volatile uint16_t gain = ADC1ConvertedValue[12];
-//
-//
-//  //test registers
-//  uint32_t adc_control_reg1;
-//  uint32_t adc_control_reg2;
-//  uint32_t adc_status_reg;
-//
-//  //TIM_Cmd(TIM2, ENABLE);		//start timer
-//
-//
- int i = 0;
- int j = 0;
-//
-//  uint16_t test;
-  uint16_t bufftest[NUM_CHANNELS];
+  int i = 0;
+  int j = 0;
 
   /* Infinite loop */
   while (1)
   {
-	//  printf("vfo_amp  vfo_freq  lfo_amp  lfo_freq  volume  env_attack  env_decay  env_sustain  env_release  fc_low  fc_high  fc_resonance  gain\n");
-//	printf("   %u       %u        %u	   %u		%u		  %u		 %u			%u			  %u		 %u		  %u		%u			%u\n", (unsigned int)vfo_amp, (unsigned int)vfo_freq, (unsigned int)lfo_amp, (unsigned int)lfo_freq, (unsigned int)volume, (unsigned int)env_attack, (unsigned int)env_decay, (unsigned int)env_sustain, (unsigned int)env_release, (unsigned int)fc_low, (unsigned int)fc_high, (unsigned int)fc_resonance, (unsigned int)gain);
 
-//	  test = vfo_amp;
-//	  test = vfo_freq;
-//	  test = lfo_amp;
-//	  test = lfo_freq;
-//	  test = volume;
-//	  test = env_attack;
-//	  test = env_decay;
-//	  test = env_sustain;
-//	  test = env_release;
-//	  test = fc_low;
-//	  test = fc_high;
-//	  test = fc_resonance;
-//	  test = gain;
-//
-//	  adc_control_reg1 = ADC1->CR1;
-//	  adc_control_reg2 = ADC1->CR2;
-//	  adc_status_reg = ADC1->SR;
-	  bufftest[0] = ADCBuffer[0];
-	  bufftest[1] = ADCBuffer[1];
-	  bufftest[2] = ADCBuffer[2];
-	  bufftest[3] = ADCBuffer[3];
-	  bufftest[4] = ADCBuffer[4];
-	  bufftest[5] = ADCBuffer[5];
-	// Waste some time
-	for (j = 0; j < 5000000; j++){
 
-	}
+	  /* Used for Testing*/
+	  uint16_t vfo_amp = ADCBuffer[0];
+	  uint16_t vfo_freq = ADCBuffer[1];
+	  uint16_t lfo_amp = ADCBuffer[2];
+	  uint16_t lfo_freq = ADCBuffer[3];
+	  uint16_t volume = ADCBuffer[4];
+	  uint16_t env_attack = ADCBuffer[5];
+	  uint16_t env_decay = ADCBuffer[6];
+	  uint16_t env_sustain = ADCBuffer[7];
+	  uint16_t env_release = ADCBuffer[8];
+	  uint16_t fc_low = ADCBuffer[9];
+	  uint16_t fc_high = ADCBuffer[10];
+	  uint16_t fc_resonance = ADCBuffer[11];
+	  uint16_t gain = ADCBuffer[12];
+	  // Waste some time
+	  for (j = 0; j < 5000000; j++){
+	  }
+
+
   }
 }
 
