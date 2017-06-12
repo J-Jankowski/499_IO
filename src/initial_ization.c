@@ -5,17 +5,29 @@
  *      Author: jjank
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_adc.h"
 #include "initial_ization.h"
+#include "main.h"
+
+/*********************************************************Globlal Variables***************************************
+ *
+ */
 
 
 
+
+
+
+/*
+ * Initializes the ADC to work in scan mode with 13 channels for pots
+ * Uses DMA to transfer data and a timer to throttle the ADC conversion
+ * The conversion cycle occurs every 75ms this function starts the timer.
+ */
 void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]){
 
 	/* Define ADC init structures */
@@ -164,6 +176,61 @@ void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]){
 
 
 	TIM_Cmd(TIM2, ENABLE);		//This could be dine in the main however gonna leave it here
+
+
+}
+
+
+
+
+
+
+
+
+/*
+ * Sets up the 5 position selectors
+
+ */
+
+void init_gpios(){
+
+	GPIO_InitTypeDef GPIO_InitStructure;
+
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC,ENABLE); 			//This is already turned on in ADC Init function
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE);
+
+	/*
+	 * E Bank pins
+	 * PE7 		vco_sine
+	 * PE8		vco_sawtooth
+	 * PE9		vco_square
+	 * PE10		vco_triangle
+	 * PE11 	vco_other 2 talk to mike
+	 * PE12 	lfo_sine
+	 * PE13		lfo_sawtooth
+	 * PE14		lfo_square
+	 * PE15		lfo_triangle
+	 */
+	GPIO_StructInit(&GPIO_InitStructure);							// Default values
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 |GPIO_Pin_11 | GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;					//input
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//slow
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//no
+	GPIO_Init(GPIOE, &GPIO_InitStructure);
+
+
+	/*
+	 * C bank pins
+	 * PC12		lfo_other2
+	 */
+	GPIO_StructInit(&GPIO_InitStructure);							//default values
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_13;
+	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;					//input
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//slow
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//pull down
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+
 
 
 }

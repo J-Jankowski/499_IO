@@ -29,6 +29,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
+#include "stm32f4xx_gpio.h"
+#include "initial_ization.h"
+#include "user_interface.h"
 
 /** @addtogroup Template_Project
   * @{
@@ -145,7 +148,13 @@ void SysTick_Handler(void)
 
 
 void TIM2_IRQHandler(){
-	TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET){
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+		update_selector_state();
+	}
+
+
 }
 
 // set up yet but might to see if the adc is working
