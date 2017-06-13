@@ -145,15 +145,43 @@ void SysTick_Handler(void)
 {
 /*  TimingDelay_Decrement(); */
 }
+//EXTI9_5_IRQn
+
+void EXTI9_5_IRQHandler(void){
+
+	EXTI_ClearITPendingBit(EXTI_Line6 | EXTI_Line6 | EXTI_Line7 | EXTI_Line8 | EXTI_Line9);
+
+	if(!((TIM4->CR1 & TIM_CR1_CEN) == TIM_CR1_CEN)){			//is debounce timer off
+			TIM_Cmd(TIM4, ENABLE);								//turn on debounce timer
+	}
+}
+
+
+
+
+void EXTI15_10_IRQHandler(void){
+	EXTI_ClearITPendingBit(EXTI_Line10 | EXTI_Line11 | EXTI_Line12 | EXTI_Line13 | EXTI_Line14 | EXTI_Line15);
+
+	if(!((TIM4->CR1 & TIM_CR1_CEN) == TIM_CR1_CEN)){		//is debounce timer off
+			TIM_Cmd(TIM4, ENABLE);							//turn on debounce timer
+	}
+}
+
+
 
 
 void TIM2_IRQHandler(){
 
-	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET){
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-		update_selector_state();
-	}
 
+
+}
+
+// Timer for debouncing
+void TIM4_IRQHandler(){
+		TIM_Cmd(TIM4, DISABLE);								//stop timer
+		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);			//clear interrupt
+		update_selector_state();							//update state
 
 }
 

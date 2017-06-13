@@ -40,8 +40,6 @@ SOFTWARE.
 /* Private function prototypes */
 /* Private functions */
 
-// extern typedef enum selector_state {sine, sawtooth, square, triangle, other2};
-
 /**
 **===========================================================================
 **
@@ -49,12 +47,6 @@ SOFTWARE.
 **
 **===========================================================================
 */
-
-
-
-
-
-
 
 int main(void)
 {
@@ -83,7 +75,7 @@ int main(void)
   /********************************testing variables gona leave in for know *****************************/
 
   //used for testing the selector
-  selector_state test1,test2;	//
+  selector_state testvfo,testlfo;	//
 
   /* Used for Testing ADC Values can be thrown out*/
   uint16_t vfo_amp = ADCBuffer[0];
@@ -109,17 +101,7 @@ int main(void)
 
   init_gpios();								//initialize gpios
   init_adc(ADCBuffer);						//initialize ADC, do this last because it starts the timer
-
-
-
-
-
-
-
-
-
-
-
+  update_selector_state();					// get startup state
 
   int i = 0;
   int j = 0;
@@ -134,8 +116,8 @@ int main(void)
 	  }
 
 	//used for testing wave selectors
-	test1 = lfo_state;
-	test2 = vfo_state;
+	testlfo = lfo_state;
+	testvfo = vfo_state;
 
 	//used for testing ADC
 	vfo_amp = ADCBuffer[0];

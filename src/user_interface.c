@@ -16,6 +16,7 @@
  */
 void update_selector_state (){
 
+
 	if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_7) == 1){
 		vfo_state = sine;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_8) == 1){
