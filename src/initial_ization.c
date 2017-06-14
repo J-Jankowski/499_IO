@@ -235,7 +235,7 @@ void init_gpios(){
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;					//input
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//slow
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//pull down
-GPIO_Init(GPIOC, &GPIO_InitStructure);
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
 
 
 	/*Configure Tim4 for debouncing	 */
@@ -260,22 +260,18 @@ GPIO_Init(GPIOC, &GPIO_InitStructure);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG,ENABLE);
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource6);
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource7);
-	//| EXTI_PinSource8 | EXTI_PinSource9);
-	//| EXTI_PinSource10 | EXTI_PinSource11 | EXTI_PinSource12 | EXTI_PinSource13 | EXTI_PinSource14 | EXTI_PinSource15);
-//	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource8);
-//	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource9);
-//	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource10);
-//	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource11);
-//	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource12);
-//	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource13);
-//	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource14);
-//	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource15);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource8);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource9);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource10);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource11);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource12);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource13);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource14);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource15);
 
 
 	//init EXTI
-	EXTI_init_struct.EXTI_Line = EXTI_Line6 | EXTI_Line7;
-
-	// EXTI_Line8| EXTI_Line9 | EXTI_Line10 | EXTI_Line11 | EXTI_Line12 | EXTI_Line13 | EXTI_Line14 | EXTI_Line15;
+	EXTI_init_struct.EXTI_Line = EXTI_Line6 | EXTI_Line7 | EXTI_Line8 | EXTI_Line9 | EXTI_Line10 | EXTI_Line11 | EXTI_Line12 | EXTI_Line13 | EXTI_Line14 | EXTI_Line15;
 	EXTI_init_struct.EXTI_LineCmd = ENABLE;
 	EXTI_init_struct.EXTI_Mode =  EXTI_Mode_Interrupt;
 	EXTI_init_struct.EXTI_Trigger = EXTI_Trigger_Rising;
@@ -288,11 +284,11 @@ GPIO_Init(GPIOC, &GPIO_InitStructure);
 	NVIC_Init(&EXTI_NVIC_init_struct);
 
 
-//	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI15_10_IRQn;;
-//	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
-//	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
-//	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
-//	NVIC_Init(&EXTI_NVIC_init_struct);
+	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI15_10_IRQn;;
+	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
+	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
+	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&EXTI_NVIC_init_struct);
 
 
 
