@@ -170,12 +170,7 @@ void EXTI15_10_IRQHandler(void){
 
 
 
-void TIM2_IRQHandler(){
 
-		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-
-
-}
 
 // Timer for debouncing
 void TIM4_IRQHandler(){

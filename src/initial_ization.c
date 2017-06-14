@@ -35,7 +35,6 @@ void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]){
 	/* Define ADC init structures */
 	ADC_InitTypeDef       adc_init_struct;
 	ADC_CommonInitTypeDef adc_com_init_struct;
-	NVIC_InitTypeDef NVIC_Init_struct;
 	DMA_InitTypeDef DMA_Init_struct;
 	GPIO_InitTypeDef GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef time_base_struct;
@@ -53,12 +52,6 @@ void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]){
 	TIM_TimeBaseInit(TIM2, &time_base_struct);
 	TIM_SelectOutputTrigger(TIM2,TIM_TRGOSource_Update);
 	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
-
-	NVIC_Init_struct.NVIC_IRQChannel = TIM2_IRQn;					//get rid of this a after EXTI is working
-	NVIC_Init_struct.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
-	NVIC_Init_struct.NVIC_IRQChannelSubPriority = 0x0F;
-	NVIC_Init(&NVIC_Init_struct);
 
 	/* Enable clock on DMA1 & GPIO's */
 	/* Enable DMA2, thats where ADC peripheral is used */
