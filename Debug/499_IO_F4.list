@@ -5,6 +5,7 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   00000188  08000000  08000000  00010000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
+<<<<<<< HEAD
   1 .text         00001924  08000188  08000188  00010188  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .rodata       00000018  08001aac  08001aac  00011aac  2**2
@@ -14,6 +15,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
   4 .fini_array   00000004  08001ac8  08001ac8  00011ac8  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   5 .data         00000020  20000000  08001acc  00020000  2**2
+=======
+  1 .text         00001980  08000188  08000188  00010188  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       00000018  08001b08  08001b08  00011b08  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .init_array   00000004  08001b20  08001b20  00011b20  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .fini_array   00000004  08001b24  08001b24  00011b24  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 .data         00000020  20000000  08001b28  00020000  2**2
+>>>>>>> extibutton
                   CONTENTS, ALLOC, LOAD, DATA
   6 .ccmram       00000000  10000000  10000000  00020020  2**0
                   CONTENTS
@@ -31,6 +43,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  13 .debug_ranges 00000b10  00000000  00000000  0002ba90  2**3
                   CONTENTS, READONLY, DEBUGGING
+<<<<<<< HEAD
  14 .debug_line   00004095  00000000  00000000  0002c5a0  2**0
                   CONTENTS, READONLY, DEBUGGING
  15 .debug_str    00003b47  00000000  00000000  00030635  2**0
@@ -38,6 +51,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
  16 .comment      0000007e  00000000  00000000  0003417c  2**0
                   CONTENTS, READONLY
  17 .debug_frame  00003328  00000000  00000000  000341fc  2**2
+=======
+ 14 .debug_line   0000409e  00000000  00000000  0002c5a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_str    00003b47  00000000  00000000  0003063e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .comment      0000007e  00000000  00000000  00034185  2**0
+                  CONTENTS, READONLY
+ 17 .debug_frame  00003328  00000000  00000000  00034204  2**2
+>>>>>>> extibutton
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -56,7 +78,11 @@ Disassembly of section .text:
  800019e:	bd10      	pop	{r4, pc}
  80001a0:	20000020 	.word	0x20000020
  80001a4:	00000000 	.word	0x00000000
+<<<<<<< HEAD
  80001a8:	08001a94 	.word	0x08001a94
+=======
+ 80001a8:	08001af0 	.word	0x08001af0
+>>>>>>> extibutton
 
 080001ac <frame_dummy>:
  80001ac:	b508      	push	{r3, lr}
@@ -68,7 +94,11 @@ Disassembly of section .text:
  80001ba:	bd08      	pop	{r3, pc}
  80001bc:	00000000 	.word	0x00000000
  80001c0:	20000024 	.word	0x20000024
+<<<<<<< HEAD
  80001c4:	08001a94 	.word	0x08001a94
+=======
+ 80001c4:	08001af0 	.word	0x08001af0
+>>>>>>> extibutton
 
 080001c8 <NVIC_Init>:
   * @param  NVIC_InitStruct: pointer to a NVIC_InitTypeDef structure that contains
@@ -3071,8 +3101,13 @@ void STM_EVAL_LEDInit(Led_TypeDef Led)
  8000faa:	3710      	adds	r7, #16
  8000fac:	46bd      	mov	sp, r7
  8000fae:	bd80      	pop	{r7, pc}
+<<<<<<< HEAD
  8000fb0:	08001ab4 	.word	0x08001ab4
  8000fb4:	08001aac 	.word	0x08001aac
+=======
+ 8000fb0:	08001b10 	.word	0x08001b10
+ 8000fb4:	08001b08 	.word	0x08001b08
+>>>>>>> extibutton
  8000fb8:	20000000 	.word	0x20000000
 
 08000fbc <STM_EVAL_LEDOn>:
@@ -3102,7 +3137,11 @@ void STM_EVAL_LEDOn(Led_TypeDef Led)
  8000fde:	f85d 7b04 	ldr.w	r7, [sp], #4
  8000fe2:	4770      	bx	lr
  8000fe4:	20000000 	.word	0x20000000
+<<<<<<< HEAD
  8000fe8:	08001aac 	.word	0x08001aac
+=======
+ 8000fe8:	08001b08 	.word	0x08001b08
+>>>>>>> extibutton
 
 08000fec <Audio_MAL_IRQHandler>:
   * @brief  This function handles main Media layer interrupt. 
@@ -3264,7 +3303,11 @@ static void Audio_MAL_IRQHandler(void)
  80010c2:	681b      	ldr	r3, [r3, #0]
  80010c4:	2100      	movs	r1, #0
  80010c6:	4618      	mov	r0, r3
+<<<<<<< HEAD
  80010c8:	f000 fac0 	bl	800164c <EVAL_AUDIO_TransferComplete_CallBack>
+=======
+ 80010c8:	f000 faee 	bl	80016a8 <EVAL_AUDIO_TransferComplete_CallBack>
+>>>>>>> extibutton
     /* Clear the Interrupt flag */
     DMA_ClearFlag(AUDIO_MAL_DMA_STREAM, AUDIO_MAL_DMA_FLAG_TE | AUDIO_MAL_DMA_FLAG_FE | \
                                         AUDIO_MAL_DMA_FLAG_DME);
@@ -3335,7 +3378,11 @@ void Audio_I2S_IRQHandler(void)
     {
       /* Wirte data to the DAC interface */
       DAC_SetChannel1Data(DAC_Align_12b_L, EVAL_AUDIO_GetSampleCallBack()); 
+<<<<<<< HEAD
  8001116:	f000 faa5 	bl	8001664 <EVAL_AUDIO_GetSampleCallBack>
+=======
+ 8001116:	f000 fad3 	bl	80016c0 <EVAL_AUDIO_GetSampleCallBack>
+>>>>>>> extibutton
  800111a:	4603      	mov	r3, r0
  800111c:	4619      	mov	r1, r3
  800111e:	2004      	movs	r0, #4
@@ -3344,7 +3391,11 @@ void Audio_I2S_IRQHandler(void)
     
     /* Send dummy data on I2S to avoid the underrun condition */
     SPI_I2S_SendData(CODEC_I2S, EVAL_AUDIO_GetSampleCallBack()); 
+<<<<<<< HEAD
  8001124:	f000 fa9e 	bl	8001664 <EVAL_AUDIO_GetSampleCallBack>
+=======
+ 8001124:	f000 facc 	bl	80016c0 <EVAL_AUDIO_GetSampleCallBack>
+>>>>>>> extibutton
  8001128:	4603      	mov	r3, r0
  800112a:	4619      	mov	r1, r3
  800112c:	4802      	ldr	r0, [pc, #8]	; (8001138 <SPI3_IRQHandler+0x3c>)
@@ -3814,7 +3865,11 @@ void init_gpios(){
 	GPIO_Init(GPIOE, &GPIO_InitStructure);
  800143c:	f107 0320 	add.w	r3, r7, #32
  8001440:	4619      	mov	r1, r3
+<<<<<<< HEAD
  8001442:	4838      	ldr	r0, [pc, #224]	; (8001524 <init_gpios+0x120>)
+=======
+ 8001442:	484f      	ldr	r0, [pc, #316]	; (8001580 <init_gpios+0x17c>)
+>>>>>>> extibutton
  8001444:	f7ff fae4 	bl	8000a10 <GPIO_Init>
 
 	/*
@@ -3837,10 +3892,17 @@ void init_gpios(){
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//pull down
  8001464:	2300      	movs	r3, #0
  8001466:	f887 3027 	strb.w	r3, [r7, #39]	; 0x27
+<<<<<<< HEAD
 GPIO_Init(GPIOC, &GPIO_InitStructure);
  800146a:	f107 0320 	add.w	r3, r7, #32
  800146e:	4619      	mov	r1, r3
  8001470:	482d      	ldr	r0, [pc, #180]	; (8001528 <init_gpios+0x124>)
+=======
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
+ 800146a:	f107 0320 	add.w	r3, r7, #32
+ 800146e:	4619      	mov	r1, r3
+ 8001470:	4844      	ldr	r0, [pc, #272]	; (8001584 <init_gpios+0x180>)
+>>>>>>> extibutton
  8001472:	f7ff facd 	bl	8000a10 <GPIO_Init>
 
 
@@ -3860,10 +3922,17 @@ GPIO_Init(GPIOC, &GPIO_InitStructure);
  800148c:	2300      	movs	r3, #0
  800148e:	82fb      	strh	r3, [r7, #22]
 	tim4_base_struct.TIM_Period = MYTIM4_PERIOD;
+<<<<<<< HEAD
  8001490:	f44f 63d2 	mov.w	r3, #1680	; 0x690
  8001494:	61bb      	str	r3, [r7, #24]
 	tim4_base_struct.TIM_Prescaler = myTIM4_PRESCALER;
  8001496:	f243 1338 	movw	r3, #12600	; 0x3138
+=======
+ 8001490:	f241 0368 	movw	r3, #4200	; 0x1068
+ 8001494:	61bb      	str	r3, [r7, #24]
+	tim4_base_struct.TIM_Prescaler = myTIM4_PRESCALER;
+ 8001496:	f44f 63fa 	mov.w	r3, #2000	; 0x7d0
+>>>>>>> extibutton
  800149a:	82bb      	strh	r3, [r7, #20]
 	TIM_TimeBaseInit(TIM2, &tim4_base_struct);
  800149c:	f107 0314 	add.w	r3, r7, #20
@@ -3891,7 +3960,11 @@ GPIO_Init(GPIOC, &GPIO_InitStructure);
 	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
  80014c2:	2201      	movs	r2, #1
  80014c4:	2101      	movs	r1, #1
+<<<<<<< HEAD
  80014c6:	4819      	ldr	r0, [pc, #100]	; (800152c <init_gpios+0x128>)
+=======
+ 80014c6:	4830      	ldr	r0, [pc, #192]	; (8001588 <init_gpios+0x184>)
+>>>>>>> extibutton
  80014c8:	f7ff fcf8 	bl	8000ebc <TIM_ITConfig>
 
 
@@ -3908,6 +3981,7 @@ GPIO_Init(GPIOC, &GPIO_InitStructure);
  80014de:	2107      	movs	r1, #7
  80014e0:	2004      	movs	r0, #4
  80014e2:	f7ff fc03 	bl	8000cec <SYSCFG_EXTILineConfig>
+<<<<<<< HEAD
 //	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource14);
 //	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource15);
 
@@ -3949,11 +4023,100 @@ GPIO_Init(GPIOC, &GPIO_InitStructure);
  8001514:	4618      	mov	r0, r3
  8001516:	f7fe fe57 	bl	80001c8 <NVIC_Init>
 //	NVIC_Init(&EXTI_NVIC_init_struct);
+=======
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource8);
+ 80014e6:	2108      	movs	r1, #8
+ 80014e8:	2004      	movs	r0, #4
+ 80014ea:	f7ff fbff 	bl	8000cec <SYSCFG_EXTILineConfig>
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource9);
+ 80014ee:	2109      	movs	r1, #9
+ 80014f0:	2004      	movs	r0, #4
+ 80014f2:	f7ff fbfb 	bl	8000cec <SYSCFG_EXTILineConfig>
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource10);
+ 80014f6:	210a      	movs	r1, #10
+ 80014f8:	2004      	movs	r0, #4
+ 80014fa:	f7ff fbf7 	bl	8000cec <SYSCFG_EXTILineConfig>
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource11);
+ 80014fe:	210b      	movs	r1, #11
+ 8001500:	2004      	movs	r0, #4
+ 8001502:	f7ff fbf3 	bl	8000cec <SYSCFG_EXTILineConfig>
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource12);
+ 8001506:	210c      	movs	r1, #12
+ 8001508:	2004      	movs	r0, #4
+ 800150a:	f7ff fbef 	bl	8000cec <SYSCFG_EXTILineConfig>
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource13);
+ 800150e:	210d      	movs	r1, #13
+ 8001510:	2004      	movs	r0, #4
+ 8001512:	f7ff fbeb 	bl	8000cec <SYSCFG_EXTILineConfig>
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource14);
+ 8001516:	210e      	movs	r1, #14
+ 8001518:	2004      	movs	r0, #4
+ 800151a:	f7ff fbe7 	bl	8000cec <SYSCFG_EXTILineConfig>
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource15);
+ 800151e:	210f      	movs	r1, #15
+ 8001520:	2004      	movs	r0, #4
+ 8001522:	f7ff fbe3 	bl	8000cec <SYSCFG_EXTILineConfig>
+
+
+	//init EXTI
+	EXTI_init_struct.EXTI_Line = EXTI_Line6 | EXTI_Line7 | EXTI_Line8 | EXTI_Line9 | EXTI_Line10 | EXTI_Line11 | EXTI_Line12 | EXTI_Line13 | EXTI_Line14 | EXTI_Line15;
+ 8001526:	f64f 73c0 	movw	r3, #65472	; 0xffc0
+ 800152a:	60fb      	str	r3, [r7, #12]
+	EXTI_init_struct.EXTI_LineCmd = ENABLE;
+ 800152c:	2301      	movs	r3, #1
+ 800152e:	74bb      	strb	r3, [r7, #18]
+	EXTI_init_struct.EXTI_Mode =  EXTI_Mode_Interrupt;
+ 8001530:	2300      	movs	r3, #0
+ 8001532:	743b      	strb	r3, [r7, #16]
+	EXTI_init_struct.EXTI_Trigger = EXTI_Trigger_Rising;
+ 8001534:	2308      	movs	r3, #8
+ 8001536:	747b      	strb	r3, [r7, #17]
+	EXTI_Init(&EXTI_init_struct);
+ 8001538:	f107 030c 	add.w	r3, r7, #12
+ 800153c:	4618      	mov	r0, r3
+ 800153e:	f7ff f9e5 	bl	800090c <EXTI_Init>
+
+	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI9_5_IRQn;
+ 8001542:	2317      	movs	r3, #23
+ 8001544:	723b      	strb	r3, [r7, #8]
+	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
+ 8001546:	230f      	movs	r3, #15
+ 8001548:	727b      	strb	r3, [r7, #9]
+	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
+ 800154a:	230f      	movs	r3, #15
+ 800154c:	72bb      	strb	r3, [r7, #10]
+	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
+ 800154e:	2301      	movs	r3, #1
+ 8001550:	72fb      	strb	r3, [r7, #11]
+	NVIC_Init(&EXTI_NVIC_init_struct);
+ 8001552:	f107 0308 	add.w	r3, r7, #8
+ 8001556:	4618      	mov	r0, r3
+ 8001558:	f7fe fe36 	bl	80001c8 <NVIC_Init>
+
+
+	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI15_10_IRQn;;
+ 800155c:	2328      	movs	r3, #40	; 0x28
+ 800155e:	723b      	strb	r3, [r7, #8]
+	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
+ 8001560:	230f      	movs	r3, #15
+ 8001562:	727b      	strb	r3, [r7, #9]
+	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
+ 8001564:	230f      	movs	r3, #15
+ 8001566:	72bb      	strb	r3, [r7, #10]
+	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
+ 8001568:	2301      	movs	r3, #1
+ 800156a:	72fb      	strb	r3, [r7, #11]
+	NVIC_Init(&EXTI_NVIC_init_struct);
+ 800156c:	f107 0308 	add.w	r3, r7, #8
+ 8001570:	4618      	mov	r0, r3
+ 8001572:	f7fe fe29 	bl	80001c8 <NVIC_Init>
+>>>>>>> extibutton
 
 
 
 
 }
+<<<<<<< HEAD
  800151a:	bf00      	nop
  800151c:	3728      	adds	r7, #40	; 0x28
  800151e:	46bd      	mov	sp, r7
@@ -3964,12 +4127,25 @@ GPIO_Init(GPIOC, &GPIO_InitStructure);
  800152c:	40000800 	.word	0x40000800
 
 08001530 <main>:
+=======
+ 8001576:	bf00      	nop
+ 8001578:	3728      	adds	r7, #40	; 0x28
+ 800157a:	46bd      	mov	sp, r7
+ 800157c:	bd80      	pop	{r7, pc}
+ 800157e:	bf00      	nop
+ 8001580:	40021000 	.word	0x40021000
+ 8001584:	40020800 	.word	0x40020800
+ 8001588:	40000800 	.word	0x40000800
+
+0800158c <main>:
+>>>>>>> extibutton
 **
 **===========================================================================
 */
 
 int main(void)
 {
+<<<<<<< HEAD
  8001530:	b580      	push	{r7, lr}
  8001532:	b08a      	sub	sp, #40	; 0x28
  8001534:	af00      	add	r7, sp, #0
@@ -4001,12 +4177,46 @@ int main(void)
   STM_EVAL_LEDOn(LED6);
  8001560:	2003      	movs	r0, #3
  8001562:	f7ff fd2b 	bl	8000fbc <STM_EVAL_LEDOn>
+=======
+ 800158c:	b580      	push	{r7, lr}
+ 800158e:	b08a      	sub	sp, #40	; 0x28
+ 8001590:	af00      	add	r7, sp, #0
+  /*****************************This came with project just gona leave for now*******************************/
+  /* Initialize LEDs */
+  STM_EVAL_LEDInit(LED3);
+ 8001592:	2001      	movs	r0, #1
+ 8001594:	f7ff fce4 	bl	8000f60 <STM_EVAL_LEDInit>
+  STM_EVAL_LEDInit(LED4);
+ 8001598:	2000      	movs	r0, #0
+ 800159a:	f7ff fce1 	bl	8000f60 <STM_EVAL_LEDInit>
+  STM_EVAL_LEDInit(LED5);
+ 800159e:	2002      	movs	r0, #2
+ 80015a0:	f7ff fcde 	bl	8000f60 <STM_EVAL_LEDInit>
+  STM_EVAL_LEDInit(LED6);
+ 80015a4:	2003      	movs	r0, #3
+ 80015a6:	f7ff fcdb 	bl	8000f60 <STM_EVAL_LEDInit>
+
+  /* Turn on LEDs */
+  STM_EVAL_LEDOn(LED3);
+ 80015aa:	2001      	movs	r0, #1
+ 80015ac:	f7ff fd06 	bl	8000fbc <STM_EVAL_LEDOn>
+  STM_EVAL_LEDOn(LED4);
+ 80015b0:	2000      	movs	r0, #0
+ 80015b2:	f7ff fd03 	bl	8000fbc <STM_EVAL_LEDOn>
+  STM_EVAL_LEDOn(LED5);
+ 80015b6:	2002      	movs	r0, #2
+ 80015b8:	f7ff fd00 	bl	8000fbc <STM_EVAL_LEDOn>
+  STM_EVAL_LEDOn(LED6);
+ 80015bc:	2003      	movs	r0, #3
+ 80015be:	f7ff fcfd 	bl	8000fbc <STM_EVAL_LEDOn>
+>>>>>>> extibutton
 
   //used for testing the selector
   selector_state testvfo,testlfo;	//
 
   /* Used for Testing ADC Values can be thrown out*/
   uint16_t vfo_amp = ADCBuffer[0];
+<<<<<<< HEAD
  8001566:	4b35      	ldr	r3, [pc, #212]	; (800163c <main+0x10c>)
  8001568:	881b      	ldrh	r3, [r3, #0]
  800156a:	847b      	strh	r3, [r7, #34]	; 0x22
@@ -4058,12 +4268,66 @@ int main(void)
  80015ae:	4b23      	ldr	r3, [pc, #140]	; (800163c <main+0x10c>)
  80015b0:	8b1b      	ldrh	r3, [r3, #24]
  80015b2:	817b      	strh	r3, [r7, #10]
+=======
+ 80015c2:	4b35      	ldr	r3, [pc, #212]	; (8001698 <main+0x10c>)
+ 80015c4:	881b      	ldrh	r3, [r3, #0]
+ 80015c6:	847b      	strh	r3, [r7, #34]	; 0x22
+  uint16_t vfo_freq = ADCBuffer[1];
+ 80015c8:	4b33      	ldr	r3, [pc, #204]	; (8001698 <main+0x10c>)
+ 80015ca:	885b      	ldrh	r3, [r3, #2]
+ 80015cc:	843b      	strh	r3, [r7, #32]
+  uint16_t lfo_amp = ADCBuffer[2];
+ 80015ce:	4b32      	ldr	r3, [pc, #200]	; (8001698 <main+0x10c>)
+ 80015d0:	889b      	ldrh	r3, [r3, #4]
+ 80015d2:	83fb      	strh	r3, [r7, #30]
+  uint16_t lfo_freq = ADCBuffer[3];
+ 80015d4:	4b30      	ldr	r3, [pc, #192]	; (8001698 <main+0x10c>)
+ 80015d6:	88db      	ldrh	r3, [r3, #6]
+ 80015d8:	83bb      	strh	r3, [r7, #28]
+  uint16_t volume = ADCBuffer[4];
+ 80015da:	4b2f      	ldr	r3, [pc, #188]	; (8001698 <main+0x10c>)
+ 80015dc:	891b      	ldrh	r3, [r3, #8]
+ 80015de:	837b      	strh	r3, [r7, #26]
+  uint16_t env_attack = ADCBuffer[5];
+ 80015e0:	4b2d      	ldr	r3, [pc, #180]	; (8001698 <main+0x10c>)
+ 80015e2:	895b      	ldrh	r3, [r3, #10]
+ 80015e4:	833b      	strh	r3, [r7, #24]
+  uint16_t env_decay = ADCBuffer[6];
+ 80015e6:	4b2c      	ldr	r3, [pc, #176]	; (8001698 <main+0x10c>)
+ 80015e8:	899b      	ldrh	r3, [r3, #12]
+ 80015ea:	82fb      	strh	r3, [r7, #22]
+  uint16_t env_sustain = ADCBuffer[7];
+ 80015ec:	4b2a      	ldr	r3, [pc, #168]	; (8001698 <main+0x10c>)
+ 80015ee:	89db      	ldrh	r3, [r3, #14]
+ 80015f0:	82bb      	strh	r3, [r7, #20]
+  uint16_t env_release = ADCBuffer[8];
+ 80015f2:	4b29      	ldr	r3, [pc, #164]	; (8001698 <main+0x10c>)
+ 80015f4:	8a1b      	ldrh	r3, [r3, #16]
+ 80015f6:	827b      	strh	r3, [r7, #18]
+  uint16_t fc_low = ADCBuffer[9];
+ 80015f8:	4b27      	ldr	r3, [pc, #156]	; (8001698 <main+0x10c>)
+ 80015fa:	8a5b      	ldrh	r3, [r3, #18]
+ 80015fc:	823b      	strh	r3, [r7, #16]
+  uint16_t fc_high = ADCBuffer[10];
+ 80015fe:	4b26      	ldr	r3, [pc, #152]	; (8001698 <main+0x10c>)
+ 8001600:	8a9b      	ldrh	r3, [r3, #20]
+ 8001602:	81fb      	strh	r3, [r7, #14]
+  uint16_t fc_resonance = ADCBuffer[11];
+ 8001604:	4b24      	ldr	r3, [pc, #144]	; (8001698 <main+0x10c>)
+ 8001606:	8adb      	ldrh	r3, [r3, #22]
+ 8001608:	81bb      	strh	r3, [r7, #12]
+  uint16_t gain = ADCBuffer[12];
+ 800160a:	4b23      	ldr	r3, [pc, #140]	; (8001698 <main+0x10c>)
+ 800160c:	8b1b      	ldrh	r3, [r3, #24]
+ 800160e:	817b      	strh	r3, [r7, #10]
+>>>>>>> extibutton
 
 
 
   /**************************** Run Initialization functions timer for tim2 started in init_adc*****************************/
 
   init_gpios();								//initialize gpios
+<<<<<<< HEAD
  80015b4:	f7ff ff26 	bl	8001404 <init_gpios>
   init_adc(ADCBuffer);						//initialize ADC, do this last because it starts the timer
  80015b8:	4820      	ldr	r0, [pc, #128]	; (800163c <main+0x10c>)
@@ -4077,12 +4341,28 @@ int main(void)
   int j = 0;
  80015c6:	2300      	movs	r3, #0
  80015c8:	627b      	str	r3, [r7, #36]	; 0x24
+=======
+ 8001610:	f7ff fef8 	bl	8001404 <init_gpios>
+  init_adc(ADCBuffer);						//initialize ADC, do this last because it starts the timer
+ 8001614:	4820      	ldr	r0, [pc, #128]	; (8001698 <main+0x10c>)
+ 8001616:	f7ff fd93 	bl	8001140 <init_adc>
+  update_selector_state();					// get startup state
+ 800161a:	f000 f9c1 	bl	80019a0 <update_selector_state>
+
+  int i = 0;
+ 800161e:	2300      	movs	r3, #0
+ 8001620:	607b      	str	r3, [r7, #4]
+  int j = 0;
+ 8001622:	2300      	movs	r3, #0
+ 8001624:	627b      	str	r3, [r7, #36]	; 0x24
+>>>>>>> extibutton
   while (1)
   {
 
 
 	  // Waste some time
 	  for (j = 0; j < 5000000; j++){
+<<<<<<< HEAD
  80015ca:	2300      	movs	r3, #0
  80015cc:	627b      	str	r3, [r7, #36]	; 0x24
  80015ce:	e002      	b.n	80015d6 <main+0xa6>
@@ -4093,10 +4373,23 @@ int main(void)
  80015d8:	4a19      	ldr	r2, [pc, #100]	; (8001640 <main+0x110>)
  80015da:	4293      	cmp	r3, r2
  80015dc:	ddf8      	ble.n	80015d0 <main+0xa0>
+=======
+ 8001626:	2300      	movs	r3, #0
+ 8001628:	627b      	str	r3, [r7, #36]	; 0x24
+ 800162a:	e002      	b.n	8001632 <main+0xa6>
+ 800162c:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 800162e:	3301      	adds	r3, #1
+ 8001630:	627b      	str	r3, [r7, #36]	; 0x24
+ 8001632:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8001634:	4a19      	ldr	r2, [pc, #100]	; (800169c <main+0x110>)
+ 8001636:	4293      	cmp	r3, r2
+ 8001638:	ddf8      	ble.n	800162c <main+0xa0>
+>>>>>>> extibutton
 	  }
 
 	//used for testing wave selectors
 	testlfo = lfo_state;
+<<<<<<< HEAD
  80015de:	4b19      	ldr	r3, [pc, #100]	; (8001644 <main+0x114>)
  80015e0:	781b      	ldrb	r3, [r3, #0]
  80015e2:	70fb      	strb	r3, [r7, #3]
@@ -4168,12 +4461,86 @@ int main(void)
  8001648:	200000b8 	.word	0x200000b8
 
 0800164c <EVAL_AUDIO_TransferComplete_CallBack>:
+=======
+ 800163a:	4b19      	ldr	r3, [pc, #100]	; (80016a0 <main+0x114>)
+ 800163c:	781b      	ldrb	r3, [r3, #0]
+ 800163e:	70fb      	strb	r3, [r7, #3]
+	testvfo = vfo_state;
+ 8001640:	4b18      	ldr	r3, [pc, #96]	; (80016a4 <main+0x118>)
+ 8001642:	781b      	ldrb	r3, [r3, #0]
+ 8001644:	70bb      	strb	r3, [r7, #2]
+
+	//used for testing ADC
+	vfo_amp = ADCBuffer[0];
+ 8001646:	4b14      	ldr	r3, [pc, #80]	; (8001698 <main+0x10c>)
+ 8001648:	881b      	ldrh	r3, [r3, #0]
+ 800164a:	847b      	strh	r3, [r7, #34]	; 0x22
+	vfo_freq = ADCBuffer[1];
+ 800164c:	4b12      	ldr	r3, [pc, #72]	; (8001698 <main+0x10c>)
+ 800164e:	885b      	ldrh	r3, [r3, #2]
+ 8001650:	843b      	strh	r3, [r7, #32]
+	lfo_amp = ADCBuffer[2];
+ 8001652:	4b11      	ldr	r3, [pc, #68]	; (8001698 <main+0x10c>)
+ 8001654:	889b      	ldrh	r3, [r3, #4]
+ 8001656:	83fb      	strh	r3, [r7, #30]
+	lfo_freq = ADCBuffer[3];
+ 8001658:	4b0f      	ldr	r3, [pc, #60]	; (8001698 <main+0x10c>)
+ 800165a:	88db      	ldrh	r3, [r3, #6]
+ 800165c:	83bb      	strh	r3, [r7, #28]
+	volume = ADCBuffer[4];
+ 800165e:	4b0e      	ldr	r3, [pc, #56]	; (8001698 <main+0x10c>)
+ 8001660:	891b      	ldrh	r3, [r3, #8]
+ 8001662:	837b      	strh	r3, [r7, #26]
+	env_attack = ADCBuffer[5];
+ 8001664:	4b0c      	ldr	r3, [pc, #48]	; (8001698 <main+0x10c>)
+ 8001666:	895b      	ldrh	r3, [r3, #10]
+ 8001668:	833b      	strh	r3, [r7, #24]
+	env_decay = ADCBuffer[6];
+ 800166a:	4b0b      	ldr	r3, [pc, #44]	; (8001698 <main+0x10c>)
+ 800166c:	899b      	ldrh	r3, [r3, #12]
+ 800166e:	82fb      	strh	r3, [r7, #22]
+	env_sustain = ADCBuffer[7];
+ 8001670:	4b09      	ldr	r3, [pc, #36]	; (8001698 <main+0x10c>)
+ 8001672:	89db      	ldrh	r3, [r3, #14]
+ 8001674:	82bb      	strh	r3, [r7, #20]
+	env_release = ADCBuffer[8];
+ 8001676:	4b08      	ldr	r3, [pc, #32]	; (8001698 <main+0x10c>)
+ 8001678:	8a1b      	ldrh	r3, [r3, #16]
+ 800167a:	827b      	strh	r3, [r7, #18]
+	fc_low = ADCBuffer[9];
+ 800167c:	4b06      	ldr	r3, [pc, #24]	; (8001698 <main+0x10c>)
+ 800167e:	8a5b      	ldrh	r3, [r3, #18]
+ 8001680:	823b      	strh	r3, [r7, #16]
+	fc_high = ADCBuffer[10];
+ 8001682:	4b05      	ldr	r3, [pc, #20]	; (8001698 <main+0x10c>)
+ 8001684:	8a9b      	ldrh	r3, [r3, #20]
+ 8001686:	81fb      	strh	r3, [r7, #14]
+	fc_resonance = ADCBuffer[11];
+ 8001688:	4b03      	ldr	r3, [pc, #12]	; (8001698 <main+0x10c>)
+ 800168a:	8adb      	ldrh	r3, [r3, #22]
+ 800168c:	81bb      	strh	r3, [r7, #12]
+	gain = ADCBuffer[12];
+ 800168e:	4b02      	ldr	r3, [pc, #8]	; (8001698 <main+0x10c>)
+ 8001690:	8b1b      	ldrh	r3, [r3, #24]
+ 8001692:	817b      	strh	r3, [r7, #10]
+
+  }
+ 8001694:	e7c7      	b.n	8001626 <main+0x9a>
+ 8001696:	bf00      	nop
+ 8001698:	200000bc 	.word	0x200000bc
+ 800169c:	004c4b3f 	.word	0x004c4b3f
+ 80016a0:	200000b9 	.word	0x200000b9
+ 80016a4:	200000b8 	.word	0x200000b8
+
+080016a8 <EVAL_AUDIO_TransferComplete_CallBack>:
+>>>>>>> extibutton
 
 /*
  * Callback used by stm32f4_discovery_audio_codec.c.
  * Refer to stm32f4_discovery_audio_codec.h for more info.
  */
 void EVAL_AUDIO_TransferComplete_CallBack(uint32_t pBuffer, uint32_t Size){
+<<<<<<< HEAD
  800164c:	b480      	push	{r7}
  800164e:	b083      	sub	sp, #12
  8001650:	af00      	add	r7, sp, #0
@@ -4190,12 +4557,31 @@ void EVAL_AUDIO_TransferComplete_CallBack(uint32_t pBuffer, uint32_t Size){
  8001662:	bf00      	nop
 
 08001664 <EVAL_AUDIO_GetSampleCallBack>:
+=======
+ 80016a8:	b480      	push	{r7}
+ 80016aa:	b083      	sub	sp, #12
+ 80016ac:	af00      	add	r7, sp, #0
+ 80016ae:	6078      	str	r0, [r7, #4]
+ 80016b0:	6039      	str	r1, [r7, #0]
+  /* TODO, implement your code here */
+  return;
+ 80016b2:	bf00      	nop
+}
+ 80016b4:	370c      	adds	r7, #12
+ 80016b6:	46bd      	mov	sp, r7
+ 80016b8:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 80016bc:	4770      	bx	lr
+ 80016be:	bf00      	nop
+
+080016c0 <EVAL_AUDIO_GetSampleCallBack>:
+>>>>>>> extibutton
 
 /*
  * Callback used by stm324xg_eval_audio_codec.c.
  * Refer to stm324xg_eval_audio_codec.h for more info.
  */
 uint16_t EVAL_AUDIO_GetSampleCallBack(void){
+<<<<<<< HEAD
  8001664:	b480      	push	{r7}
  8001666:	af00      	add	r7, sp, #0
   /* TODO, implement your code here */
@@ -4209,12 +4595,28 @@ uint16_t EVAL_AUDIO_GetSampleCallBack(void){
  8001676:	bf00      	nop
 
 08001678 <Reset_Handler>:
+=======
+ 80016c0:	b480      	push	{r7}
+ 80016c2:	af00      	add	r7, sp, #0
+  /* TODO, implement your code here */
+  return -1;
+ 80016c4:	f64f 73ff 	movw	r3, #65535	; 0xffff
+}
+ 80016c8:	4618      	mov	r0, r3
+ 80016ca:	46bd      	mov	sp, r7
+ 80016cc:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 80016d0:	4770      	bx	lr
+ 80016d2:	bf00      	nop
+
+080016d4 <Reset_Handler>:
+>>>>>>> extibutton
 
     .section  .text.Reset_Handler
   .weak  Reset_Handler
   .type  Reset_Handler, %function
 Reset_Handler:  
   ldr   sp, =_estack    /* Atollic update: set stack pointer */
+<<<<<<< HEAD
  8001678:	f8df d034 	ldr.w	sp, [pc, #52]	; 80016b0 <LoopFillZerobss+0x14>
 
 /* Copy the data segment initializers from flash to SRAM */  
@@ -4282,59 +4684,160 @@ LoopFillZerobss:
  80016aa:	f7ff ff41 	bl	8001530 <main>
   bx  lr    
  80016ae:	4770      	bx	lr
+=======
+ 80016d4:	f8df d034 	ldr.w	sp, [pc, #52]	; 800170c <LoopFillZerobss+0x14>
+
+/* Copy the data segment initializers from flash to SRAM */  
+  movs  r1, #0
+ 80016d8:	2100      	movs	r1, #0
+  b  LoopCopyDataInit
+ 80016da:	e003      	b.n	80016e4 <LoopCopyDataInit>
+
+080016dc <CopyDataInit>:
+
+CopyDataInit:
+  ldr  r3, =_sidata
+ 80016dc:	4b0c      	ldr	r3, [pc, #48]	; (8001710 <LoopFillZerobss+0x18>)
+  ldr  r3, [r3, r1]
+ 80016de:	585b      	ldr	r3, [r3, r1]
+  str  r3, [r0, r1]
+ 80016e0:	5043      	str	r3, [r0, r1]
+  adds  r1, r1, #4
+ 80016e2:	3104      	adds	r1, #4
+
+080016e4 <LoopCopyDataInit>:
+    
+LoopCopyDataInit:
+  ldr  r0, =_sdata
+ 80016e4:	480b      	ldr	r0, [pc, #44]	; (8001714 <LoopFillZerobss+0x1c>)
+  ldr  r3, =_edata
+ 80016e6:	4b0c      	ldr	r3, [pc, #48]	; (8001718 <LoopFillZerobss+0x20>)
+  adds  r2, r0, r1
+ 80016e8:	1842      	adds	r2, r0, r1
+  cmp  r2, r3
+ 80016ea:	429a      	cmp	r2, r3
+  bcc  CopyDataInit
+ 80016ec:	d3f6      	bcc.n	80016dc <CopyDataInit>
+  ldr  r2, =_sbss
+ 80016ee:	4a0b      	ldr	r2, [pc, #44]	; (800171c <LoopFillZerobss+0x24>)
+  b  LoopFillZerobss
+ 80016f0:	e002      	b.n	80016f8 <LoopFillZerobss>
+
+080016f2 <FillZerobss>:
+/* Zero fill the bss segment. */  
+FillZerobss:
+  movs  r3, #0
+ 80016f2:	2300      	movs	r3, #0
+  str  r3, [r2], #4
+ 80016f4:	f842 3b04 	str.w	r3, [r2], #4
+
+080016f8 <LoopFillZerobss>:
+    
+LoopFillZerobss:
+  ldr  r3, = _ebss
+ 80016f8:	4b09      	ldr	r3, [pc, #36]	; (8001720 <LoopFillZerobss+0x28>)
+  cmp  r2, r3
+ 80016fa:	429a      	cmp	r2, r3
+  bcc  FillZerobss
+ 80016fc:	d3f9      	bcc.n	80016f2 <FillZerobss>
+
+/* Call the clock system intitialization function.*/
+  bl  SystemInit   
+ 80016fe:	f000 f89d 	bl	800183c <SystemInit>
+/* Call static constructors */
+    bl __libc_init_array
+ 8001702:	f000 f9cf 	bl	8001aa4 <__libc_init_array>
+/* Call the application's entry point.*/
+  bl  main
+ 8001706:	f7ff ff41 	bl	800158c <main>
+  bx  lr    
+ 800170a:	4770      	bx	lr
+>>>>>>> extibutton
 
     .section  .text.Reset_Handler
   .weak  Reset_Handler
   .type  Reset_Handler, %function
 Reset_Handler:  
   ldr   sp, =_estack    /* Atollic update: set stack pointer */
+<<<<<<< HEAD
  80016b0:	20020000 	.word	0x20020000
+=======
+ 800170c:	20020000 	.word	0x20020000
+>>>>>>> extibutton
 /* Copy the data segment initializers from flash to SRAM */  
   movs  r1, #0
   b  LoopCopyDataInit
 
 CopyDataInit:
   ldr  r3, =_sidata
+<<<<<<< HEAD
  80016b4:	08001acc 	.word	0x08001acc
+=======
+ 8001710:	08001b28 	.word	0x08001b28
+>>>>>>> extibutton
   ldr  r3, [r3, r1]
   str  r3, [r0, r1]
   adds  r1, r1, #4
     
 LoopCopyDataInit:
   ldr  r0, =_sdata
+<<<<<<< HEAD
  80016b8:	20000000 	.word	0x20000000
   ldr  r3, =_edata
  80016bc:	20000020 	.word	0x20000020
+=======
+ 8001714:	20000000 	.word	0x20000000
+  ldr  r3, =_edata
+ 8001718:	20000020 	.word	0x20000020
+>>>>>>> extibutton
   adds  r2, r0, r1
   cmp  r2, r3
   bcc  CopyDataInit
   ldr  r2, =_sbss
+<<<<<<< HEAD
  80016c0:	20000020 	.word	0x20000020
+=======
+ 800171c:	20000020 	.word	0x20000020
+>>>>>>> extibutton
 FillZerobss:
   movs  r3, #0
   str  r3, [r2], #4
     
 LoopFillZerobss:
   ldr  r3, = _ebss
+<<<<<<< HEAD
  80016c4:	200000d8 	.word	0x200000d8
 
 080016c8 <CAN1_RX0_IRQHandler>:
+=======
+ 8001720:	200000d8 	.word	0x200000d8
+
+08001724 <CAN1_RX0_IRQHandler>:
+>>>>>>> extibutton
  * @retval None       
 */
     .section  .text.Default_Handler,"ax",%progbits
 Default_Handler:
 Infinite_Loop:
   b  Infinite_Loop
+<<<<<<< HEAD
  80016c8:	e7fe      	b.n	80016c8 <CAN1_RX0_IRQHandler>
 	...
 
 080016cc <NMI_Handler>:
+=======
+ 8001724:	e7fe      	b.n	8001724 <CAN1_RX0_IRQHandler>
+	...
+
+08001728 <NMI_Handler>:
+>>>>>>> extibutton
   * @brief   This function handles NMI exception.
   * @param  None
   * @retval None
   */
 void NMI_Handler(void)
 {
+<<<<<<< HEAD
  80016cc:	b480      	push	{r7}
  80016ce:	af00      	add	r7, sp, #0
 }
@@ -4345,76 +4848,137 @@ void NMI_Handler(void)
  80016da:	bf00      	nop
 
 080016dc <HardFault_Handler>:
+=======
+ 8001728:	b480      	push	{r7}
+ 800172a:	af00      	add	r7, sp, #0
+}
+ 800172c:	bf00      	nop
+ 800172e:	46bd      	mov	sp, r7
+ 8001730:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8001734:	4770      	bx	lr
+ 8001736:	bf00      	nop
+
+08001738 <HardFault_Handler>:
+>>>>>>> extibutton
   * @brief  This function handles Hard Fault exception.
   * @param  None
   * @retval None
   */
 void HardFault_Handler(void)
 {
+<<<<<<< HEAD
  80016dc:	b480      	push	{r7}
  80016de:	af00      	add	r7, sp, #0
+=======
+ 8001738:	b480      	push	{r7}
+ 800173a:	af00      	add	r7, sp, #0
+>>>>>>> extibutton
   /* Go to infinite loop when Hard Fault exception occurs */
   while (1)
   {
   }
+<<<<<<< HEAD
  80016e0:	e7fe      	b.n	80016e0 <HardFault_Handler+0x4>
  80016e2:	bf00      	nop
 
 080016e4 <MemManage_Handler>:
+=======
+ 800173c:	e7fe      	b.n	800173c <HardFault_Handler+0x4>
+ 800173e:	bf00      	nop
+
+08001740 <MemManage_Handler>:
+>>>>>>> extibutton
   * @brief  This function handles Memory Manage exception.
   * @param  None
   * @retval None
   */
 void MemManage_Handler(void)
 {
+<<<<<<< HEAD
  80016e4:	b480      	push	{r7}
  80016e6:	af00      	add	r7, sp, #0
+=======
+ 8001740:	b480      	push	{r7}
+ 8001742:	af00      	add	r7, sp, #0
+>>>>>>> extibutton
   /* Go to infinite loop when Memory Manage exception occurs */
   while (1)
   {
   }
+<<<<<<< HEAD
  80016e8:	e7fe      	b.n	80016e8 <MemManage_Handler+0x4>
  80016ea:	bf00      	nop
 
 080016ec <BusFault_Handler>:
+=======
+ 8001744:	e7fe      	b.n	8001744 <MemManage_Handler+0x4>
+ 8001746:	bf00      	nop
+
+08001748 <BusFault_Handler>:
+>>>>>>> extibutton
   * @brief  This function handles Bus Fault exception.
   * @param  None
   * @retval None
   */
 void BusFault_Handler(void)
 {
+<<<<<<< HEAD
  80016ec:	b480      	push	{r7}
  80016ee:	af00      	add	r7, sp, #0
+=======
+ 8001748:	b480      	push	{r7}
+ 800174a:	af00      	add	r7, sp, #0
+>>>>>>> extibutton
   /* Go to infinite loop when Bus Fault exception occurs */
   while (1)
   {
   }
+<<<<<<< HEAD
  80016f0:	e7fe      	b.n	80016f0 <BusFault_Handler+0x4>
  80016f2:	bf00      	nop
 
 080016f4 <UsageFault_Handler>:
+=======
+ 800174c:	e7fe      	b.n	800174c <BusFault_Handler+0x4>
+ 800174e:	bf00      	nop
+
+08001750 <UsageFault_Handler>:
+>>>>>>> extibutton
   * @brief  This function handles Usage Fault exception.
   * @param  None
   * @retval None
   */
 void UsageFault_Handler(void)
 {
+<<<<<<< HEAD
  80016f4:	b480      	push	{r7}
  80016f6:	af00      	add	r7, sp, #0
+=======
+ 8001750:	b480      	push	{r7}
+ 8001752:	af00      	add	r7, sp, #0
+>>>>>>> extibutton
   /* Go to infinite loop when Usage Fault exception occurs */
   while (1)
   {
   }
+<<<<<<< HEAD
  80016f8:	e7fe      	b.n	80016f8 <UsageFault_Handler+0x4>
  80016fa:	bf00      	nop
 
 080016fc <SVC_Handler>:
+=======
+ 8001754:	e7fe      	b.n	8001754 <UsageFault_Handler+0x4>
+ 8001756:	bf00      	nop
+
+08001758 <SVC_Handler>:
+>>>>>>> extibutton
   * @brief  This function handles SVCall exception.
   * @param  None
   * @retval None
   */
 void SVC_Handler(void)
 {
+<<<<<<< HEAD
  80016fc:	b480      	push	{r7}
  80016fe:	af00      	add	r7, sp, #0
 }
@@ -4425,12 +4989,25 @@ void SVC_Handler(void)
  800170a:	bf00      	nop
 
 0800170c <DebugMon_Handler>:
+=======
+ 8001758:	b480      	push	{r7}
+ 800175a:	af00      	add	r7, sp, #0
+}
+ 800175c:	bf00      	nop
+ 800175e:	46bd      	mov	sp, r7
+ 8001760:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8001764:	4770      	bx	lr
+ 8001766:	bf00      	nop
+
+08001768 <DebugMon_Handler>:
+>>>>>>> extibutton
   * @brief  This function handles Debug Monitor exception.
   * @param  None
   * @retval None
   */
 void DebugMon_Handler(void)
 {
+<<<<<<< HEAD
  800170c:	b480      	push	{r7}
  800170e:	af00      	add	r7, sp, #0
 }
@@ -4441,12 +5018,25 @@ void DebugMon_Handler(void)
  800171a:	bf00      	nop
 
 0800171c <PendSV_Handler>:
+=======
+ 8001768:	b480      	push	{r7}
+ 800176a:	af00      	add	r7, sp, #0
+}
+ 800176c:	bf00      	nop
+ 800176e:	46bd      	mov	sp, r7
+ 8001770:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8001774:	4770      	bx	lr
+ 8001776:	bf00      	nop
+
+08001778 <PendSV_Handler>:
+>>>>>>> extibutton
   * @brief  This function handles PendSVC exception.
   * @param  None
   * @retval None
   */
 void PendSV_Handler(void)
 {
+<<<<<<< HEAD
  800171c:	b480      	push	{r7}
  800171e:	af00      	add	r7, sp, #0
 }
@@ -4457,12 +5047,25 @@ void PendSV_Handler(void)
  800172a:	bf00      	nop
 
 0800172c <SysTick_Handler>:
+=======
+ 8001778:	b480      	push	{r7}
+ 800177a:	af00      	add	r7, sp, #0
+}
+ 800177c:	bf00      	nop
+ 800177e:	46bd      	mov	sp, r7
+ 8001780:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8001784:	4770      	bx	lr
+ 8001786:	bf00      	nop
+
+08001788 <SysTick_Handler>:
+>>>>>>> extibutton
   * @brief  This function handles SysTick Handler.
   * @param  None
   * @retval None
   */
 void SysTick_Handler(void)
 {
+<<<<<<< HEAD
  800172c:	b480      	push	{r7}
  800172e:	af00      	add	r7, sp, #0
 /*  TimingDelay_Decrement(); */
@@ -4503,11 +5106,54 @@ void EXTI9_5_IRQHandler(void){
  8001764:	40000800 	.word	0x40000800
 
 08001768 <EXTI15_10_IRQHandler>:
+=======
+ 8001788:	b480      	push	{r7}
+ 800178a:	af00      	add	r7, sp, #0
+/*  TimingDelay_Decrement(); */
+}
+ 800178c:	bf00      	nop
+ 800178e:	46bd      	mov	sp, r7
+ 8001790:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8001794:	4770      	bx	lr
+ 8001796:	bf00      	nop
+
+08001798 <EXTI9_5_IRQHandler>:
+//EXTI9_5_IRQn
+
+void EXTI9_5_IRQHandler(void){
+ 8001798:	b580      	push	{r7, lr}
+ 800179a:	af00      	add	r7, sp, #0
+
+	EXTI_ClearITPendingBit(EXTI_Line6 | EXTI_Line6 | EXTI_Line7 | EXTI_Line8 | EXTI_Line9);
+ 800179c:	f44f 7070 	mov.w	r0, #960	; 0x3c0
+ 80017a0:	f7ff f926 	bl	80009f0 <EXTI_ClearITPendingBit>
+
+	if(!((TIM4->CR1 & TIM_CR1_CEN) == TIM_CR1_CEN)){			//is debounce timer off
+ 80017a4:	4b06      	ldr	r3, [pc, #24]	; (80017c0 <EXTI9_5_IRQHandler+0x28>)
+ 80017a6:	881b      	ldrh	r3, [r3, #0]
+ 80017a8:	b29b      	uxth	r3, r3
+ 80017aa:	f003 0301 	and.w	r3, r3, #1
+ 80017ae:	2b00      	cmp	r3, #0
+ 80017b0:	d103      	bne.n	80017ba <EXTI9_5_IRQHandler+0x22>
+			TIM_Cmd(TIM4, ENABLE);								//turn on debounce timer
+ 80017b2:	2101      	movs	r1, #1
+ 80017b4:	4802      	ldr	r0, [pc, #8]	; (80017c0 <EXTI9_5_IRQHandler+0x28>)
+ 80017b6:	f7ff fb61 	bl	8000e7c <TIM_Cmd>
+	}
+}
+ 80017ba:	bf00      	nop
+ 80017bc:	bd80      	pop	{r7, pc}
+ 80017be:	bf00      	nop
+ 80017c0:	40000800 	.word	0x40000800
+
+080017c4 <EXTI15_10_IRQHandler>:
+>>>>>>> extibutton
 
 
 
 
 void EXTI15_10_IRQHandler(void){
+<<<<<<< HEAD
  8001768:	b580      	push	{r7, lr}
  800176a:	af00      	add	r7, sp, #0
 	EXTI_ClearITPendingBit(EXTI_Line10 | EXTI_Line11 | EXTI_Line12 | EXTI_Line13 | EXTI_Line14 | EXTI_Line15);
@@ -4533,11 +5179,39 @@ void EXTI15_10_IRQHandler(void){
  8001790:	40000800 	.word	0x40000800
 
 08001794 <TIM2_IRQHandler>:
+=======
+ 80017c4:	b580      	push	{r7, lr}
+ 80017c6:	af00      	add	r7, sp, #0
+	EXTI_ClearITPendingBit(EXTI_Line10 | EXTI_Line11 | EXTI_Line12 | EXTI_Line13 | EXTI_Line14 | EXTI_Line15);
+ 80017c8:	f44f 407c 	mov.w	r0, #64512	; 0xfc00
+ 80017cc:	f7ff f910 	bl	80009f0 <EXTI_ClearITPendingBit>
+
+	if(!((TIM4->CR1 & TIM_CR1_CEN) == TIM_CR1_CEN)){		//is debounce timer off
+ 80017d0:	4b06      	ldr	r3, [pc, #24]	; (80017ec <EXTI15_10_IRQHandler+0x28>)
+ 80017d2:	881b      	ldrh	r3, [r3, #0]
+ 80017d4:	b29b      	uxth	r3, r3
+ 80017d6:	f003 0301 	and.w	r3, r3, #1
+ 80017da:	2b00      	cmp	r3, #0
+ 80017dc:	d103      	bne.n	80017e6 <EXTI15_10_IRQHandler+0x22>
+			TIM_Cmd(TIM4, ENABLE);							//turn on debounce timer
+ 80017de:	2101      	movs	r1, #1
+ 80017e0:	4802      	ldr	r0, [pc, #8]	; (80017ec <EXTI15_10_IRQHandler+0x28>)
+ 80017e2:	f7ff fb4b 	bl	8000e7c <TIM_Cmd>
+	}
+}
+ 80017e6:	bf00      	nop
+ 80017e8:	bd80      	pop	{r7, pc}
+ 80017ea:	bf00      	nop
+ 80017ec:	40000800 	.word	0x40000800
+
+080017f0 <TIM2_IRQHandler>:
+>>>>>>> extibutton
 
 
 
 
 void TIM2_IRQHandler(){
+<<<<<<< HEAD
  8001794:	b580      	push	{r7, lr}
  8001796:	af00      	add	r7, sp, #0
 
@@ -4546,6 +5220,15 @@ void TIM2_IRQHandler(){
  800179a:	f04f 4080 	mov.w	r0, #1073741824	; 0x40000000
  800179e:	f7ff fbb1 	bl	8000f04 <TIM_ClearITPendingBit>
 
+=======
+ 80017f0:	b580      	push	{r7, lr}
+ 80017f2:	af00      	add	r7, sp, #0
+
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+ 80017f4:	2101      	movs	r1, #1
+ 80017f6:	f04f 4080 	mov.w	r0, #1073741824	; 0x40000000
+ 80017fa:	f7ff fb83 	bl	8000f04 <TIM_ClearITPendingBit>
+>>>>>>> extibutton
 
 }
  80017a2:	bf00      	nop
@@ -4570,6 +5253,7 @@ void TIM4_IRQHandler(){
  80017bc:	f000 f8c2 	bl	8001944 <update_selector_state>
 
 }
+<<<<<<< HEAD
  80017c0:	bf00      	nop
  80017c2:	bd80      	pop	{r7, pc}
  80017c4:	40000800 	.word	0x40000800
@@ -4592,12 +5276,59 @@ void ADC_IRQHandler() {
  80017dc:	40012000 	.word	0x40012000
 
 080017e0 <SystemInit>:
+=======
+ 80017fe:	bf00      	nop
+ 8001800:	bd80      	pop	{r7, pc}
+ 8001802:	bf00      	nop
+
+08001804 <TIM4_IRQHandler>:
+
+// Timer for debouncing
+void TIM4_IRQHandler(){
+ 8001804:	b580      	push	{r7, lr}
+ 8001806:	af00      	add	r7, sp, #0
+		TIM_Cmd(TIM4, DISABLE);								//stop timer
+ 8001808:	2100      	movs	r1, #0
+ 800180a:	4805      	ldr	r0, [pc, #20]	; (8001820 <TIM4_IRQHandler+0x1c>)
+ 800180c:	f7ff fb36 	bl	8000e7c <TIM_Cmd>
+		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);			//clear interrupt
+ 8001810:	2101      	movs	r1, #1
+ 8001812:	4803      	ldr	r0, [pc, #12]	; (8001820 <TIM4_IRQHandler+0x1c>)
+ 8001814:	f7ff fb76 	bl	8000f04 <TIM_ClearITPendingBit>
+		update_selector_state();							//update state
+ 8001818:	f000 f8c2 	bl	80019a0 <update_selector_state>
+
+}
+ 800181c:	bf00      	nop
+ 800181e:	bd80      	pop	{r7, pc}
+ 8001820:	40000800 	.word	0x40000800
+
+08001824 <ADC_IRQHandler>:
+
+// set up yet but might to see if the adc is working
+void ADC_IRQHandler() {
+ 8001824:	b580      	push	{r7, lr}
+ 8001826:	af00      	add	r7, sp, #0
+        /* acknowledge interrupt */
+        ADC_ClearITPendingBit(ADC1, ADC_IT_EOC);
+ 8001828:	f240 2105 	movw	r1, #517	; 0x205
+ 800182c:	4802      	ldr	r0, [pc, #8]	; (8001838 <ADC_IRQHandler+0x14>)
+ 800182e:	f7fe ff0d 	bl	800064c <ADC_ClearITPendingBit>
+}
+ 8001832:	bf00      	nop
+ 8001834:	bd80      	pop	{r7, pc}
+ 8001836:	bf00      	nop
+ 8001838:	40012000 	.word	0x40012000
+
+0800183c <SystemInit>:
+>>>>>>> extibutton
   *         SystemFrequency variable.
   * @param  None
   * @retval None
   */
 void SystemInit(void)
 {
+<<<<<<< HEAD
  80017e0:	b580      	push	{r7, lr}
  80017e2:	af00      	add	r7, sp, #0
   /* FPU settings ------------------------------------------------------------*/
@@ -4608,11 +5339,24 @@ void SystemInit(void)
  80017e8:	f8d3 3088 	ldr.w	r3, [r3, #136]	; 0x88
  80017ec:	f443 0370 	orr.w	r3, r3, #15728640	; 0xf00000
  80017f0:	f8c2 3088 	str.w	r3, [r2, #136]	; 0x88
+=======
+ 800183c:	b580      	push	{r7, lr}
+ 800183e:	af00      	add	r7, sp, #0
+  /* FPU settings ------------------------------------------------------------*/
+  #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+	SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
+ 8001840:	4a16      	ldr	r2, [pc, #88]	; (800189c <SystemInit+0x60>)
+ 8001842:	4b16      	ldr	r3, [pc, #88]	; (800189c <SystemInit+0x60>)
+ 8001844:	f8d3 3088 	ldr.w	r3, [r3, #136]	; 0x88
+ 8001848:	f443 0370 	orr.w	r3, r3, #15728640	; 0xf00000
+ 800184c:	f8c2 3088 	str.w	r3, [r2, #136]	; 0x88
+>>>>>>> extibutton
   #endif
 
   /* Reset the RCC clock configuration to the default reset state ------------*/
   /* Set HSION bit */
   RCC->CR |= (uint32_t)0x00000001;
+<<<<<<< HEAD
  80017f4:	4a13      	ldr	r2, [pc, #76]	; (8001844 <SystemInit+0x64>)
  80017f6:	4b13      	ldr	r3, [pc, #76]	; (8001844 <SystemInit+0x64>)
  80017f8:	681b      	ldr	r3, [r3, #0]
@@ -4653,19 +5397,66 @@ void SystemInit(void)
  8001828:	4b06      	ldr	r3, [pc, #24]	; (8001844 <SystemInit+0x64>)
  800182a:	2200      	movs	r2, #0
  800182c:	60da      	str	r2, [r3, #12]
+=======
+ 8001850:	4a13      	ldr	r2, [pc, #76]	; (80018a0 <SystemInit+0x64>)
+ 8001852:	4b13      	ldr	r3, [pc, #76]	; (80018a0 <SystemInit+0x64>)
+ 8001854:	681b      	ldr	r3, [r3, #0]
+ 8001856:	f043 0301 	orr.w	r3, r3, #1
+ 800185a:	6013      	str	r3, [r2, #0]
+
+  /* Reset CFGR register */
+  RCC->CFGR = 0x00000000;
+ 800185c:	4b10      	ldr	r3, [pc, #64]	; (80018a0 <SystemInit+0x64>)
+ 800185e:	2200      	movs	r2, #0
+ 8001860:	609a      	str	r2, [r3, #8]
+
+  /* Reset HSEON, CSSON and PLLON bits */
+  RCC->CR &= (uint32_t)0xFEF6FFFF;
+ 8001862:	4a0f      	ldr	r2, [pc, #60]	; (80018a0 <SystemInit+0x64>)
+ 8001864:	4b0e      	ldr	r3, [pc, #56]	; (80018a0 <SystemInit+0x64>)
+ 8001866:	681b      	ldr	r3, [r3, #0]
+ 8001868:	f023 7384 	bic.w	r3, r3, #17301504	; 0x1080000
+ 800186c:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 8001870:	6013      	str	r3, [r2, #0]
+
+  /* Reset PLLCFGR register */
+  RCC->PLLCFGR = 0x24003010;
+ 8001872:	4b0b      	ldr	r3, [pc, #44]	; (80018a0 <SystemInit+0x64>)
+ 8001874:	4a0b      	ldr	r2, [pc, #44]	; (80018a4 <SystemInit+0x68>)
+ 8001876:	605a      	str	r2, [r3, #4]
+
+  /* Reset HSEBYP bit */
+  RCC->CR &= (uint32_t)0xFFFBFFFF;
+ 8001878:	4a09      	ldr	r2, [pc, #36]	; (80018a0 <SystemInit+0x64>)
+ 800187a:	4b09      	ldr	r3, [pc, #36]	; (80018a0 <SystemInit+0x64>)
+ 800187c:	681b      	ldr	r3, [r3, #0]
+ 800187e:	f423 2380 	bic.w	r3, r3, #262144	; 0x40000
+ 8001882:	6013      	str	r3, [r2, #0]
+
+  /* Disable all interrupts */
+  RCC->CIR = 0x00000000;
+ 8001884:	4b06      	ldr	r3, [pc, #24]	; (80018a0 <SystemInit+0x64>)
+ 8001886:	2200      	movs	r2, #0
+ 8001888:	60da      	str	r2, [r3, #12]
+>>>>>>> extibutton
   SystemInit_ExtMemCtl(); 
 #endif /* DATA_IN_ExtSRAM */
          
   /* Configure the System clock source, PLL Multiplier and Divider factors, 
      AHB/APBx prescalers and Flash settings ----------------------------------*/
   SetSysClock();
+<<<<<<< HEAD
  800182e:	f000 f80d 	bl	800184c <SetSysClock>
+=======
+ 800188a:	f000 f80d 	bl	80018a8 <SetSysClock>
+>>>>>>> extibutton
 
   /* Configure the Vector Table location add offset address ------------------*/
 #ifdef VECT_TAB_SRAM
   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
 #else
   SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
+<<<<<<< HEAD
  8001832:	4b03      	ldr	r3, [pc, #12]	; (8001840 <SystemInit+0x60>)
  8001834:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
  8001838:	609a      	str	r2, [r3, #8]
@@ -4679,19 +5470,41 @@ void SystemInit(void)
  8001848:	24003010 	.word	0x24003010
 
 0800184c <SetSysClock>:
+=======
+ 800188e:	4b03      	ldr	r3, [pc, #12]	; (800189c <SystemInit+0x60>)
+ 8001890:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
+ 8001894:	609a      	str	r2, [r3, #8]
+#endif
+}
+ 8001896:	bf00      	nop
+ 8001898:	bd80      	pop	{r7, pc}
+ 800189a:	bf00      	nop
+ 800189c:	e000ed00 	.word	0xe000ed00
+ 80018a0:	40023800 	.word	0x40023800
+ 80018a4:	24003010 	.word	0x24003010
+
+080018a8 <SetSysClock>:
+>>>>>>> extibutton
   *         is reset to the default reset state (done in SystemInit() function).   
   * @param  None
   * @retval None
   */
 static void SetSysClock(void)
 {
+<<<<<<< HEAD
  800184c:	b480      	push	{r7}
  800184e:	b083      	sub	sp, #12
  8001850:	af00      	add	r7, sp, #0
+=======
+ 80018a8:	b480      	push	{r7}
+ 80018aa:	b083      	sub	sp, #12
+ 80018ac:	af00      	add	r7, sp, #0
+>>>>>>> extibutton
 /******************************************************************************/
 /*            PLL (clocked by HSE) used as System clock source                */
 /******************************************************************************/
   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+<<<<<<< HEAD
  8001852:	2300      	movs	r3, #0
  8001854:	607b      	str	r3, [r7, #4]
  8001856:	2300      	movs	r3, #0
@@ -4704,11 +5517,26 @@ static void SetSysClock(void)
  800185e:	681b      	ldr	r3, [r3, #0]
  8001860:	f443 3380 	orr.w	r3, r3, #65536	; 0x10000
  8001864:	6013      	str	r3, [r2, #0]
+=======
+ 80018ae:	2300      	movs	r3, #0
+ 80018b0:	607b      	str	r3, [r7, #4]
+ 80018b2:	2300      	movs	r3, #0
+ 80018b4:	603b      	str	r3, [r7, #0]
+  
+  /* Enable HSE */
+  RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 80018b6:	4a36      	ldr	r2, [pc, #216]	; (8001990 <SetSysClock+0xe8>)
+ 80018b8:	4b35      	ldr	r3, [pc, #212]	; (8001990 <SetSysClock+0xe8>)
+ 80018ba:	681b      	ldr	r3, [r3, #0]
+ 80018bc:	f443 3380 	orr.w	r3, r3, #65536	; 0x10000
+ 80018c0:	6013      	str	r3, [r2, #0]
+>>>>>>> extibutton
  
   /* Wait till HSE is ready and if Time out is reached exit */
   do
   {
     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+<<<<<<< HEAD
  8001866:	4b33      	ldr	r3, [pc, #204]	; (8001934 <SetSysClock+0xe8>)
  8001868:	681b      	ldr	r3, [r3, #0]
  800186a:	f403 3300 	and.w	r3, r3, #131072	; 0x20000
@@ -4736,10 +5564,40 @@ static void SetSysClock(void)
  8001890:	2301      	movs	r3, #1
  8001892:	603b      	str	r3, [r7, #0]
  8001894:	e001      	b.n	800189a <SetSysClock+0x4e>
+=======
+ 80018c2:	4b33      	ldr	r3, [pc, #204]	; (8001990 <SetSysClock+0xe8>)
+ 80018c4:	681b      	ldr	r3, [r3, #0]
+ 80018c6:	f403 3300 	and.w	r3, r3, #131072	; 0x20000
+ 80018ca:	603b      	str	r3, [r7, #0]
+    StartUpCounter++;
+ 80018cc:	687b      	ldr	r3, [r7, #4]
+ 80018ce:	3301      	adds	r3, #1
+ 80018d0:	607b      	str	r3, [r7, #4]
+  } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 80018d2:	683b      	ldr	r3, [r7, #0]
+ 80018d4:	2b00      	cmp	r3, #0
+ 80018d6:	d103      	bne.n	80018e0 <SetSysClock+0x38>
+ 80018d8:	687b      	ldr	r3, [r7, #4]
+ 80018da:	f5b3 6fa0 	cmp.w	r3, #1280	; 0x500
+ 80018de:	d1f0      	bne.n	80018c2 <SetSysClock+0x1a>
+
+  if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 80018e0:	4b2b      	ldr	r3, [pc, #172]	; (8001990 <SetSysClock+0xe8>)
+ 80018e2:	681b      	ldr	r3, [r3, #0]
+ 80018e4:	f403 3300 	and.w	r3, r3, #131072	; 0x20000
+ 80018e8:	2b00      	cmp	r3, #0
+ 80018ea:	d002      	beq.n	80018f2 <SetSysClock+0x4a>
+  {
+    HSEStatus = (uint32_t)0x01;
+ 80018ec:	2301      	movs	r3, #1
+ 80018ee:	603b      	str	r3, [r7, #0]
+ 80018f0:	e001      	b.n	80018f6 <SetSysClock+0x4e>
+>>>>>>> extibutton
   }
   else
   {
     HSEStatus = (uint32_t)0x00;
+<<<<<<< HEAD
  8001896:	2300      	movs	r3, #0
  8001898:	603b      	str	r3, [r7, #0]
   }
@@ -4791,10 +5649,64 @@ static void SetSysClock(void)
  80018d8:	4b16      	ldr	r3, [pc, #88]	; (8001934 <SetSysClock+0xe8>)
  80018da:	4a18      	ldr	r2, [pc, #96]	; (800193c <SetSysClock+0xf0>)
  80018dc:	605a      	str	r2, [r3, #4]
+=======
+ 80018f2:	2300      	movs	r3, #0
+ 80018f4:	603b      	str	r3, [r7, #0]
+  }
+
+  if (HSEStatus == (uint32_t)0x01)
+ 80018f6:	683b      	ldr	r3, [r7, #0]
+ 80018f8:	2b01      	cmp	r3, #1
+ 80018fa:	d142      	bne.n	8001982 <SetSysClock+0xda>
+  {
+    /* Enable high performance mode, System frequency up to 168 MHz */
+    RCC->APB1ENR |= RCC_APB1ENR_PWREN;
+ 80018fc:	4a24      	ldr	r2, [pc, #144]	; (8001990 <SetSysClock+0xe8>)
+ 80018fe:	4b24      	ldr	r3, [pc, #144]	; (8001990 <SetSysClock+0xe8>)
+ 8001900:	6c1b      	ldr	r3, [r3, #64]	; 0x40
+ 8001902:	f043 5380 	orr.w	r3, r3, #268435456	; 0x10000000
+ 8001906:	6413      	str	r3, [r2, #64]	; 0x40
+    PWR->CR |= PWR_CR_PMODE;  
+ 8001908:	4a22      	ldr	r2, [pc, #136]	; (8001994 <SetSysClock+0xec>)
+ 800190a:	4b22      	ldr	r3, [pc, #136]	; (8001994 <SetSysClock+0xec>)
+ 800190c:	681b      	ldr	r3, [r3, #0]
+ 800190e:	f443 4340 	orr.w	r3, r3, #49152	; 0xc000
+ 8001912:	6013      	str	r3, [r2, #0]
+
+    /* HCLK = SYSCLK / 1*/
+    RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
+ 8001914:	4a1e      	ldr	r2, [pc, #120]	; (8001990 <SetSysClock+0xe8>)
+ 8001916:	4b1e      	ldr	r3, [pc, #120]	; (8001990 <SetSysClock+0xe8>)
+ 8001918:	689b      	ldr	r3, [r3, #8]
+ 800191a:	6093      	str	r3, [r2, #8]
+      
+    /* PCLK2 = HCLK / 2*/
+    RCC->CFGR |= RCC_CFGR_PPRE2_DIV2;
+ 800191c:	4a1c      	ldr	r2, [pc, #112]	; (8001990 <SetSysClock+0xe8>)
+ 800191e:	4b1c      	ldr	r3, [pc, #112]	; (8001990 <SetSysClock+0xe8>)
+ 8001920:	689b      	ldr	r3, [r3, #8]
+ 8001922:	f443 4300 	orr.w	r3, r3, #32768	; 0x8000
+ 8001926:	6093      	str	r3, [r2, #8]
+    
+    /* PCLK1 = HCLK / 4*/
+    RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
+ 8001928:	4a19      	ldr	r2, [pc, #100]	; (8001990 <SetSysClock+0xe8>)
+ 800192a:	4b19      	ldr	r3, [pc, #100]	; (8001990 <SetSysClock+0xe8>)
+ 800192c:	689b      	ldr	r3, [r3, #8]
+ 800192e:	f443 53a0 	orr.w	r3, r3, #5120	; 0x1400
+ 8001932:	6093      	str	r3, [r2, #8]
+
+    /* Configure the main PLL */
+    RCC->PLLCFGR = PLL_M | (PLL_N << 6) | (((PLL_P >> 1) -1) << 16) |
+ 8001934:	4b16      	ldr	r3, [pc, #88]	; (8001990 <SetSysClock+0xe8>)
+ 8001936:	4a18      	ldr	r2, [pc, #96]	; (8001998 <SetSysClock+0xf0>)
+ 8001938:	605a      	str	r2, [r3, #4]
+>>>>>>> extibutton
                    (RCC_PLLCFGR_PLLSRC_HSE) | (PLL_Q << 24);
 
     /* Enable the main PLL */
     RCC->CR |= RCC_CR_PLLON;
+<<<<<<< HEAD
  80018de:	4a15      	ldr	r2, [pc, #84]	; (8001934 <SetSysClock+0xe8>)
  80018e0:	4b14      	ldr	r3, [pc, #80]	; (8001934 <SetSysClock+0xe8>)
  80018e2:	681b      	ldr	r3, [r3, #0]
@@ -4809,11 +5721,28 @@ static void SetSysClock(void)
  80018f0:	f003 7300 	and.w	r3, r3, #33554432	; 0x2000000
  80018f4:	2b00      	cmp	r3, #0
  80018f6:	d0f9      	beq.n	80018ec <SetSysClock+0xa0>
+=======
+ 800193a:	4a15      	ldr	r2, [pc, #84]	; (8001990 <SetSysClock+0xe8>)
+ 800193c:	4b14      	ldr	r3, [pc, #80]	; (8001990 <SetSysClock+0xe8>)
+ 800193e:	681b      	ldr	r3, [r3, #0]
+ 8001940:	f043 7380 	orr.w	r3, r3, #16777216	; 0x1000000
+ 8001944:	6013      	str	r3, [r2, #0]
+
+    /* Wait till the main PLL is ready */
+    while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 8001946:	bf00      	nop
+ 8001948:	4b11      	ldr	r3, [pc, #68]	; (8001990 <SetSysClock+0xe8>)
+ 800194a:	681b      	ldr	r3, [r3, #0]
+ 800194c:	f003 7300 	and.w	r3, r3, #33554432	; 0x2000000
+ 8001950:	2b00      	cmp	r3, #0
+ 8001952:	d0f9      	beq.n	8001948 <SetSysClock+0xa0>
+>>>>>>> extibutton
     {
     }
    
     /* Configure Flash prefetch, Instruction cache, Data cache and wait state */
     FLASH->ACR = FLASH_ACR_ICEN |FLASH_ACR_DCEN |FLASH_ACR_LATENCY_5WS;
+<<<<<<< HEAD
  80018f8:	4b11      	ldr	r3, [pc, #68]	; (8001940 <SetSysClock+0xf4>)
  80018fa:	f240 6205 	movw	r2, #1541	; 0x605
  80018fe:	601a      	str	r2, [r3, #0]
@@ -4840,12 +5769,41 @@ static void SetSysClock(void)
  800191e:	f003 030c 	and.w	r3, r3, #12
  8001922:	2b08      	cmp	r3, #8
  8001924:	d1f9      	bne.n	800191a <SetSysClock+0xce>
+=======
+ 8001954:	4b11      	ldr	r3, [pc, #68]	; (800199c <SetSysClock+0xf4>)
+ 8001956:	f240 6205 	movw	r2, #1541	; 0x605
+ 800195a:	601a      	str	r2, [r3, #0]
+
+    /* Select the main PLL as system clock source */
+    RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 800195c:	4a0c      	ldr	r2, [pc, #48]	; (8001990 <SetSysClock+0xe8>)
+ 800195e:	4b0c      	ldr	r3, [pc, #48]	; (8001990 <SetSysClock+0xe8>)
+ 8001960:	689b      	ldr	r3, [r3, #8]
+ 8001962:	f023 0303 	bic.w	r3, r3, #3
+ 8001966:	6093      	str	r3, [r2, #8]
+    RCC->CFGR |= RCC_CFGR_SW_PLL;
+ 8001968:	4a09      	ldr	r2, [pc, #36]	; (8001990 <SetSysClock+0xe8>)
+ 800196a:	4b09      	ldr	r3, [pc, #36]	; (8001990 <SetSysClock+0xe8>)
+ 800196c:	689b      	ldr	r3, [r3, #8]
+ 800196e:	f043 0302 	orr.w	r3, r3, #2
+ 8001972:	6093      	str	r3, [r2, #8]
+
+    /* Wait till the main PLL is used as system clock source */
+    while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS ) != RCC_CFGR_SWS_PLL);
+ 8001974:	bf00      	nop
+ 8001976:	4b06      	ldr	r3, [pc, #24]	; (8001990 <SetSysClock+0xe8>)
+ 8001978:	689b      	ldr	r3, [r3, #8]
+ 800197a:	f003 030c 	and.w	r3, r3, #12
+ 800197e:	2b08      	cmp	r3, #8
+ 8001980:	d1f9      	bne.n	8001976 <SetSysClock+0xce>
+>>>>>>> extibutton
   else
   { /* If HSE fails to start-up, the application will have wrong clock
          configuration. User can add here some code to deal with this error */
   }
 
 }
+<<<<<<< HEAD
  8001926:	bf00      	nop
  8001928:	370c      	adds	r7, #12
  800192a:	46bd      	mov	sp, r7
@@ -4858,12 +5816,27 @@ static void SetSysClock(void)
  8001940:	40023c00 	.word	0x40023c00
 
 08001944 <update_selector_state>:
+=======
+ 8001982:	bf00      	nop
+ 8001984:	370c      	adds	r7, #12
+ 8001986:	46bd      	mov	sp, r7
+ 8001988:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 800198c:	4770      	bx	lr
+ 800198e:	bf00      	nop
+ 8001990:	40023800 	.word	0x40023800
+ 8001994:	40007000 	.word	0x40007000
+ 8001998:	07405408 	.word	0x07405408
+ 800199c:	40023c00 	.word	0x40023c00
+
+080019a0 <update_selector_state>:
+>>>>>>> extibutton
 
 /*
  * Gets and updated the state of both the selector rotary switches
  * This funtion is called by the tim2 interrupt handler
  */
 void update_selector_state (){
+<<<<<<< HEAD
  8001944:	b580      	push	{r7, lr}
  8001946:	af00      	add	r7, sp, #0
 
@@ -4927,10 +5900,75 @@ void update_selector_state (){
  80019b6:	4b21      	ldr	r3, [pc, #132]	; (8001a3c <update_selector_state+0xf8>)
  80019b8:	2204      	movs	r2, #4
  80019ba:	701a      	strb	r2, [r3, #0]
-	}
+=======
+ 80019a0:	b580      	push	{r7, lr}
+ 80019a2:	af00      	add	r7, sp, #0
 
+	if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_7) == 1){
+ 80019a4:	2180      	movs	r1, #128	; 0x80
+ 80019a6:	483b      	ldr	r0, [pc, #236]	; (8001a94 <update_selector_state+0xf4>)
+ 80019a8:	f7ff f8da 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 80019ac:	4603      	mov	r3, r0
+ 80019ae:	2b01      	cmp	r3, #1
+ 80019b0:	d103      	bne.n	80019ba <update_selector_state+0x1a>
+		vfo_state = sine;
+ 80019b2:	4b39      	ldr	r3, [pc, #228]	; (8001a98 <update_selector_state+0xf8>)
+ 80019b4:	2200      	movs	r2, #0
+ 80019b6:	701a      	strb	r2, [r3, #0]
+ 80019b8:	e02e      	b.n	8001a18 <update_selector_state+0x78>
+	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_8) == 1){
+ 80019ba:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 80019be:	4835      	ldr	r0, [pc, #212]	; (8001a94 <update_selector_state+0xf4>)
+ 80019c0:	f7ff f8ce 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 80019c4:	4603      	mov	r3, r0
+ 80019c6:	2b01      	cmp	r3, #1
+ 80019c8:	d103      	bne.n	80019d2 <update_selector_state+0x32>
+		vfo_state = sawtooth;
+ 80019ca:	4b33      	ldr	r3, [pc, #204]	; (8001a98 <update_selector_state+0xf8>)
+ 80019cc:	2201      	movs	r2, #1
+ 80019ce:	701a      	strb	r2, [r3, #0]
+ 80019d0:	e022      	b.n	8001a18 <update_selector_state+0x78>
+	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_9) == 1){
+ 80019d2:	f44f 7100 	mov.w	r1, #512	; 0x200
+ 80019d6:	482f      	ldr	r0, [pc, #188]	; (8001a94 <update_selector_state+0xf4>)
+ 80019d8:	f7ff f8c2 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 80019dc:	4603      	mov	r3, r0
+ 80019de:	2b01      	cmp	r3, #1
+ 80019e0:	d103      	bne.n	80019ea <update_selector_state+0x4a>
+		vfo_state = square;
+ 80019e2:	4b2d      	ldr	r3, [pc, #180]	; (8001a98 <update_selector_state+0xf8>)
+ 80019e4:	2202      	movs	r2, #2
+ 80019e6:	701a      	strb	r2, [r3, #0]
+ 80019e8:	e016      	b.n	8001a18 <update_selector_state+0x78>
+	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_10) == 1){
+ 80019ea:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 80019ee:	4829      	ldr	r0, [pc, #164]	; (8001a94 <update_selector_state+0xf4>)
+ 80019f0:	f7ff f8b6 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 80019f4:	4603      	mov	r3, r0
+ 80019f6:	2b01      	cmp	r3, #1
+ 80019f8:	d103      	bne.n	8001a02 <update_selector_state+0x62>
+		vfo_state = triangle;
+ 80019fa:	4b27      	ldr	r3, [pc, #156]	; (8001a98 <update_selector_state+0xf8>)
+ 80019fc:	2203      	movs	r2, #3
+ 80019fe:	701a      	strb	r2, [r3, #0]
+ 8001a00:	e00a      	b.n	8001a18 <update_selector_state+0x78>
+	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_11) == 1){
+ 8001a02:	f44f 6100 	mov.w	r1, #2048	; 0x800
+ 8001a06:	4823      	ldr	r0, [pc, #140]	; (8001a94 <update_selector_state+0xf4>)
+ 8001a08:	f7ff f8aa 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 8001a0c:	4603      	mov	r3, r0
+ 8001a0e:	2b01      	cmp	r3, #1
+ 8001a10:	d102      	bne.n	8001a18 <update_selector_state+0x78>
+		vfo_state = other2;
+ 8001a12:	4b21      	ldr	r3, [pc, #132]	; (8001a98 <update_selector_state+0xf8>)
+ 8001a14:	2204      	movs	r2, #4
+ 8001a16:	701a      	strb	r2, [r3, #0]
+>>>>>>> extibutton
+	}
+//could put some fault detection at the end of these if statements come back later if theres time
 
 	if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_12) == 1){
+<<<<<<< HEAD
  80019bc:	f44f 5180 	mov.w	r1, #4096	; 0x1000
  80019c0:	481d      	ldr	r0, [pc, #116]	; (8001a38 <update_selector_state+0xf4>)
  80019c2:	f7ff f8cd 	bl	8000b60 <GPIO_ReadInputDataBit>
@@ -4941,19 +5979,36 @@ void update_selector_state (){
  80019cc:	4b1c      	ldr	r3, [pc, #112]	; (8001a40 <update_selector_state+0xfc>)
  80019ce:	2200      	movs	r2, #0
  80019d0:	701a      	strb	r2, [r3, #0]
+=======
+ 8001a18:	f44f 5180 	mov.w	r1, #4096	; 0x1000
+ 8001a1c:	481d      	ldr	r0, [pc, #116]	; (8001a94 <update_selector_state+0xf4>)
+ 8001a1e:	f7ff f89f 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 8001a22:	4603      	mov	r3, r0
+ 8001a24:	2b01      	cmp	r3, #1
+ 8001a26:	d103      	bne.n	8001a30 <update_selector_state+0x90>
+		lfo_state = sine;
+ 8001a28:	4b1c      	ldr	r3, [pc, #112]	; (8001a9c <update_selector_state+0xfc>)
+ 8001a2a:	2200      	movs	r2, #0
+ 8001a2c:	701a      	strb	r2, [r3, #0]
+>>>>>>> extibutton
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_15) == 1){
 		lfo_state = triangle;
 	}else if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13) == 1){
 		lfo_state = other2;
 	}
 }
+<<<<<<< HEAD
  80019d2:	e02e      	b.n	8001a32 <update_selector_state+0xee>
+=======
+ 8001a2e:	e02e      	b.n	8001a8e <update_selector_state+0xee>
+>>>>>>> extibutton
 	}
-
+//could put some fault detection at the end of these if statements come back later if theres time
 
 	if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_12) == 1){
 		lfo_state = sine;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_13) == 1){
+<<<<<<< HEAD
  80019d4:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  80019d8:	4817      	ldr	r0, [pc, #92]	; (8001a38 <update_selector_state+0xf4>)
  80019da:	f7ff f8c1 	bl	8000b60 <GPIO_ReadInputDataBit>
@@ -4964,19 +6019,36 @@ void update_selector_state (){
  80019e4:	4b16      	ldr	r3, [pc, #88]	; (8001a40 <update_selector_state+0xfc>)
  80019e6:	2201      	movs	r2, #1
  80019e8:	701a      	strb	r2, [r3, #0]
+=======
+ 8001a30:	f44f 5100 	mov.w	r1, #8192	; 0x2000
+ 8001a34:	4817      	ldr	r0, [pc, #92]	; (8001a94 <update_selector_state+0xf4>)
+ 8001a36:	f7ff f893 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 8001a3a:	4603      	mov	r3, r0
+ 8001a3c:	2b01      	cmp	r3, #1
+ 8001a3e:	d103      	bne.n	8001a48 <update_selector_state+0xa8>
+		lfo_state = sawtooth;
+ 8001a40:	4b16      	ldr	r3, [pc, #88]	; (8001a9c <update_selector_state+0xfc>)
+ 8001a42:	2201      	movs	r2, #1
+ 8001a44:	701a      	strb	r2, [r3, #0]
+>>>>>>> extibutton
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_15) == 1){
 		lfo_state = triangle;
 	}else if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13) == 1){
 		lfo_state = other2;
 	}
 }
+<<<<<<< HEAD
  80019ea:	e022      	b.n	8001a32 <update_selector_state+0xee>
+=======
+ 8001a46:	e022      	b.n	8001a8e <update_selector_state+0xee>
+>>>>>>> extibutton
 
 	if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_12) == 1){
 		lfo_state = sine;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_13) == 1){
 		lfo_state = sawtooth;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_14) == 1){
+<<<<<<< HEAD
  80019ec:	f44f 4180 	mov.w	r1, #16384	; 0x4000
  80019f0:	4811      	ldr	r0, [pc, #68]	; (8001a38 <update_selector_state+0xf4>)
  80019f2:	f7ff f8b5 	bl	8000b60 <GPIO_ReadInputDataBit>
@@ -4987,19 +6059,36 @@ void update_selector_state (){
  80019fc:	4b10      	ldr	r3, [pc, #64]	; (8001a40 <update_selector_state+0xfc>)
  80019fe:	2202      	movs	r2, #2
  8001a00:	701a      	strb	r2, [r3, #0]
+=======
+ 8001a48:	f44f 4180 	mov.w	r1, #16384	; 0x4000
+ 8001a4c:	4811      	ldr	r0, [pc, #68]	; (8001a94 <update_selector_state+0xf4>)
+ 8001a4e:	f7ff f887 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 8001a52:	4603      	mov	r3, r0
+ 8001a54:	2b01      	cmp	r3, #1
+ 8001a56:	d103      	bne.n	8001a60 <update_selector_state+0xc0>
+		lfo_state = square;
+ 8001a58:	4b10      	ldr	r3, [pc, #64]	; (8001a9c <update_selector_state+0xfc>)
+ 8001a5a:	2202      	movs	r2, #2
+ 8001a5c:	701a      	strb	r2, [r3, #0]
+>>>>>>> extibutton
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_15) == 1){
 		lfo_state = triangle;
 	}else if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13) == 1){
 		lfo_state = other2;
 	}
 }
+<<<<<<< HEAD
  8001a02:	e016      	b.n	8001a32 <update_selector_state+0xee>
+=======
+ 8001a5e:	e016      	b.n	8001a8e <update_selector_state+0xee>
+>>>>>>> extibutton
 		lfo_state = sine;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_13) == 1){
 		lfo_state = sawtooth;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_14) == 1){
 		lfo_state = square;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_15) == 1){
+<<<<<<< HEAD
  8001a04:	f44f 4100 	mov.w	r1, #32768	; 0x8000
  8001a08:	480b      	ldr	r0, [pc, #44]	; (8001a38 <update_selector_state+0xf4>)
  8001a0a:	f7ff f8a9 	bl	8000b60 <GPIO_ReadInputDataBit>
@@ -5010,17 +6099,34 @@ void update_selector_state (){
  8001a14:	4b0a      	ldr	r3, [pc, #40]	; (8001a40 <update_selector_state+0xfc>)
  8001a16:	2203      	movs	r2, #3
  8001a18:	701a      	strb	r2, [r3, #0]
+=======
+ 8001a60:	f44f 4100 	mov.w	r1, #32768	; 0x8000
+ 8001a64:	480b      	ldr	r0, [pc, #44]	; (8001a94 <update_selector_state+0xf4>)
+ 8001a66:	f7ff f87b 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 8001a6a:	4603      	mov	r3, r0
+ 8001a6c:	2b01      	cmp	r3, #1
+ 8001a6e:	d103      	bne.n	8001a78 <update_selector_state+0xd8>
+		lfo_state = triangle;
+ 8001a70:	4b0a      	ldr	r3, [pc, #40]	; (8001a9c <update_selector_state+0xfc>)
+ 8001a72:	2203      	movs	r2, #3
+ 8001a74:	701a      	strb	r2, [r3, #0]
+>>>>>>> extibutton
 	}else if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13) == 1){
 		lfo_state = other2;
 	}
 }
+<<<<<<< HEAD
  8001a1a:	e00a      	b.n	8001a32 <update_selector_state+0xee>
+=======
+ 8001a76:	e00a      	b.n	8001a8e <update_selector_state+0xee>
+>>>>>>> extibutton
 		lfo_state = sawtooth;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_14) == 1){
 		lfo_state = square;
 	}else if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_15) == 1){
 		lfo_state = triangle;
 	}else if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13) == 1){
+<<<<<<< HEAD
  8001a1c:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  8001a20:	4808      	ldr	r0, [pc, #32]	; (8001a44 <update_selector_state+0x100>)
  8001a22:	f7ff f89d 	bl	8000b60 <GPIO_ReadInputDataBit>
@@ -5089,3 +6195,73 @@ void update_selector_state (){
  8001aa6:	bc08      	pop	{r3}
  8001aa8:	469e      	mov	lr, r3
  8001aaa:	4770      	bx	lr
+=======
+ 8001a78:	f44f 5100 	mov.w	r1, #8192	; 0x2000
+ 8001a7c:	4808      	ldr	r0, [pc, #32]	; (8001aa0 <update_selector_state+0x100>)
+ 8001a7e:	f7ff f86f 	bl	8000b60 <GPIO_ReadInputDataBit>
+ 8001a82:	4603      	mov	r3, r0
+ 8001a84:	2b01      	cmp	r3, #1
+ 8001a86:	d102      	bne.n	8001a8e <update_selector_state+0xee>
+		lfo_state = other2;
+ 8001a88:	4b04      	ldr	r3, [pc, #16]	; (8001a9c <update_selector_state+0xfc>)
+ 8001a8a:	2204      	movs	r2, #4
+ 8001a8c:	701a      	strb	r2, [r3, #0]
+	}
+}
+ 8001a8e:	bf00      	nop
+ 8001a90:	bd80      	pop	{r7, pc}
+ 8001a92:	bf00      	nop
+ 8001a94:	40021000 	.word	0x40021000
+ 8001a98:	200000b8 	.word	0x200000b8
+ 8001a9c:	200000b9 	.word	0x200000b9
+ 8001aa0:	40020800 	.word	0x40020800
+
+08001aa4 <__libc_init_array>:
+ 8001aa4:	b570      	push	{r4, r5, r6, lr}
+ 8001aa6:	4b0e      	ldr	r3, [pc, #56]	; (8001ae0 <__libc_init_array+0x3c>)
+ 8001aa8:	4c0e      	ldr	r4, [pc, #56]	; (8001ae4 <__libc_init_array+0x40>)
+ 8001aaa:	1ae4      	subs	r4, r4, r3
+ 8001aac:	10a4      	asrs	r4, r4, #2
+ 8001aae:	2500      	movs	r5, #0
+ 8001ab0:	461e      	mov	r6, r3
+ 8001ab2:	42a5      	cmp	r5, r4
+ 8001ab4:	d004      	beq.n	8001ac0 <__libc_init_array+0x1c>
+ 8001ab6:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8001aba:	4798      	blx	r3
+ 8001abc:	3501      	adds	r5, #1
+ 8001abe:	e7f8      	b.n	8001ab2 <__libc_init_array+0xe>
+ 8001ac0:	f000 f816 	bl	8001af0 <_init>
+ 8001ac4:	4c08      	ldr	r4, [pc, #32]	; (8001ae8 <__libc_init_array+0x44>)
+ 8001ac6:	4b09      	ldr	r3, [pc, #36]	; (8001aec <__libc_init_array+0x48>)
+ 8001ac8:	1ae4      	subs	r4, r4, r3
+ 8001aca:	10a4      	asrs	r4, r4, #2
+ 8001acc:	2500      	movs	r5, #0
+ 8001ace:	461e      	mov	r6, r3
+ 8001ad0:	42a5      	cmp	r5, r4
+ 8001ad2:	d004      	beq.n	8001ade <__libc_init_array+0x3a>
+ 8001ad4:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8001ad8:	4798      	blx	r3
+ 8001ada:	3501      	adds	r5, #1
+ 8001adc:	e7f8      	b.n	8001ad0 <__libc_init_array+0x2c>
+ 8001ade:	bd70      	pop	{r4, r5, r6, pc}
+ 8001ae0:	08001b20 	.word	0x08001b20
+ 8001ae4:	08001b20 	.word	0x08001b20
+ 8001ae8:	08001b24 	.word	0x08001b24
+ 8001aec:	08001b20 	.word	0x08001b20
+
+08001af0 <_init>:
+ 8001af0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8001af2:	bf00      	nop
+ 8001af4:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8001af6:	bc08      	pop	{r3}
+ 8001af8:	469e      	mov	lr, r3
+ 8001afa:	4770      	bx	lr
+
+08001afc <_fini>:
+ 8001afc:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8001afe:	bf00      	nop
+ 8001b00:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8001b02:	bc08      	pop	{r3}
+ 8001b04:	469e      	mov	lr, r3
+ 8001b06:	4770      	bx	lr
+>>>>>>> extibutton
