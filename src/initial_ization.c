@@ -290,7 +290,7 @@ void init_gpios(){
 
 
 /*
- * Initialzes the pushbutton and pushbutton interrupts and debouncing timer,
+ * Initialzes the pushbutton and pushbutton interrupts and limiting timer,
  * if the interrupt priorities need to be changed make sure timer is higher than EXTI
  */
 void  init_push_buttons(){

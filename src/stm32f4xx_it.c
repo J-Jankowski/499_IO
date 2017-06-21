@@ -151,7 +151,7 @@ void SysTick_Handler(void)
  * interrupt handler for up button
  */
 void EXTI0_IRQHandler(void){
-
+	EXTI_ClearITPendingBit(EXTI_Line0);
 
 }
 
@@ -161,7 +161,7 @@ void EXTI0_IRQHandler(void){
  * interrupt handler for down button
  */
 void EXTI1_IRQHandler(void){
-
+	EXTI_ClearITPendingBit(EXTI_Line1);
 
 }
 
@@ -171,7 +171,7 @@ void EXTI1_IRQHandler(void){
  */
 void EXTI2_IRQHandler(void){
 
-
+	EXTI_ClearITPendingBit(EXTI_Line2);
 
 
 }
@@ -182,7 +182,7 @@ void EXTI2_IRQHandler(void){
  * interrupt handler for enter button
  */
 void EXTI3_IRQHandler(void){
-
+	EXTI_ClearITPendingBit(EXTI_Line3);
 
 }
 
