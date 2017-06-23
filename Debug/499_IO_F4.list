@@ -23,21 +23,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   9 .ARM.attributes 00000030  00000000  00000000  00020020  2**0
                   CONTENTS, READONLY
- 10 .debug_info   000097bb  00000000  00000000  00020050  2**0
+ 10 .debug_info   00009948  00000000  00000000  00020050  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 00001973  00000000  00000000  0002980b  2**0
+ 11 .debug_abbrev 00001973  00000000  00000000  00029998  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_aranges 00000c58  00000000  00000000  0002b180  2**3
+ 12 .debug_aranges 00000c58  00000000  00000000  0002b310  2**3
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000b40  00000000  00000000  0002bdd8  2**3
+ 13 .debug_ranges 00000b40  00000000  00000000  0002bf68  2**3
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   0000414d  00000000  00000000  0002c918  2**0
+ 14 .debug_line   00004175  00000000  00000000  0002caa8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    00003bf2  00000000  00000000  00030a65  2**0
+ 15 .debug_str    00003c08  00000000  00000000  00030c1d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .comment      0000007e  00000000  00000000  00034657  2**0
+ 16 .comment      0000007e  00000000  00000000  00034825  2**0
                   CONTENTS, READONLY
- 17 .debug_frame  000033e0  00000000  00000000  000346d8  2**2
+ 17 .debug_frame  000033e0  00000000  00000000  000348a4  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -3802,190 +3802,191 @@ void init_gpios(){
 
 	/*
 	 * C bank pins
-	 * PC12		lfo_other2
+	 * PC6		lfo_other2
 	 */
 	GPIO_StructInit(&GPIO_InitStructure);							//default values
  8001424:	f107 0320 	add.w	r3, r7, #32
  8001428:	4618      	mov	r0, r3
  800142a:	f7ff fb7f 	bl	8000b2c <GPIO_StructInit>
-	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_13;
- 800142e:	f44f 5300 	mov.w	r3, #8192	; 0x2000
- 8001432:	623b      	str	r3, [r7, #32]
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_6;
+ 800142e:	2340      	movs	r3, #64	; 0x40
+ 8001430:	623b      	str	r3, [r7, #32]
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;					//input
- 8001434:	2300      	movs	r3, #0
- 8001436:	f887 3024 	strb.w	r3, [r7, #36]	; 0x24
+ 8001432:	2300      	movs	r3, #0
+ 8001434:	f887 3024 	strb.w	r3, [r7, #36]	; 0x24
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//slow
- 800143a:	2300      	movs	r3, #0
- 800143c:	f887 3025 	strb.w	r3, [r7, #37]	; 0x25
+ 8001438:	2300      	movs	r3, #0
+ 800143a:	f887 3025 	strb.w	r3, [r7, #37]	; 0x25
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//no pull
- 8001440:	2300      	movs	r3, #0
- 8001442:	f887 3027 	strb.w	r3, [r7, #39]	; 0x27
+ 800143e:	2300      	movs	r3, #0
+ 8001440:	f887 3027 	strb.w	r3, [r7, #39]	; 0x27
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
- 8001446:	f107 0320 	add.w	r3, r7, #32
- 800144a:	4619      	mov	r1, r3
- 800144c:	4843      	ldr	r0, [pc, #268]	; (800155c <init_gpios+0x17c>)
- 800144e:	f7ff fadf 	bl	8000a10 <GPIO_Init>
+ 8001444:	f107 0320 	add.w	r3, r7, #32
+ 8001448:	4619      	mov	r1, r3
+ 800144a:	4844      	ldr	r0, [pc, #272]	; (800155c <init_gpios+0x17c>)
+ 800144c:	f7ff fae0 	bl	8000a10 <GPIO_Init>
 
 
 	/*Configure Tim4 for debouncing	 */
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
- 8001452:	2101      	movs	r1, #1
- 8001454:	2004      	movs	r0, #4
- 8001456:	f7ff fbbd 	bl	8000bd4 <RCC_APB1PeriphClockCmd>
+ 8001450:	2101      	movs	r1, #1
+ 8001452:	2004      	movs	r0, #4
+ 8001454:	f7ff fbbe 	bl	8000bd4 <RCC_APB1PeriphClockCmd>
 	TIM_TimeBaseStructInit(&tim4_base_struct);
- 800145a:	f107 0314 	add.w	r3, r7, #20
- 800145e:	4618      	mov	r0, r3
- 8001460:	f7ff fcf2 	bl	8000e48 <TIM_TimeBaseStructInit>
+ 8001458:	f107 0314 	add.w	r3, r7, #20
+ 800145c:	4618      	mov	r0, r3
+ 800145e:	f7ff fcf3 	bl	8000e48 <TIM_TimeBaseStructInit>
 	tim4_base_struct.TIM_ClockDivision = TIM_CKD_DIV1;
- 8001464:	2300      	movs	r3, #0
- 8001466:	83bb      	strh	r3, [r7, #28]
+ 8001462:	2300      	movs	r3, #0
+ 8001464:	83bb      	strh	r3, [r7, #28]
 	tim4_base_struct.TIM_CounterMode = TIM_CounterMode_Up;
- 8001468:	2300      	movs	r3, #0
- 800146a:	82fb      	strh	r3, [r7, #22]
+ 8001466:	2300      	movs	r3, #0
+ 8001468:	82fb      	strh	r3, [r7, #22]
 	tim4_base_struct.TIM_Period = MYTIM4_PERIOD;
- 800146c:	f241 0368 	movw	r3, #4200	; 0x1068
- 8001470:	61bb      	str	r3, [r7, #24]
+ 800146a:	f241 0368 	movw	r3, #4200	; 0x1068
+ 800146e:	61bb      	str	r3, [r7, #24]
 	tim4_base_struct.TIM_Prescaler = myTIM4_PRESCALER;
- 8001472:	f44f 63fa 	mov.w	r3, #2000	; 0x7d0
- 8001476:	82bb      	strh	r3, [r7, #20]
+ 8001470:	f44f 63fa 	mov.w	r3, #2000	; 0x7d0
+ 8001474:	82bb      	strh	r3, [r7, #20]
 	TIM_TimeBaseInit(TIM4, &tim4_base_struct);
- 8001478:	f107 0314 	add.w	r3, r7, #20
- 800147c:	4619      	mov	r1, r3
- 800147e:	4838      	ldr	r0, [pc, #224]	; (8001560 <init_gpios+0x180>)
- 8001480:	f7ff fc76 	bl	8000d70 <TIM_TimeBaseInit>
+ 8001476:	f107 0314 	add.w	r3, r7, #20
+ 800147a:	4619      	mov	r1, r3
+ 800147c:	4838      	ldr	r0, [pc, #224]	; (8001560 <init_gpios+0x180>)
+ 800147e:	f7ff fc77 	bl	8000d70 <TIM_TimeBaseInit>
 
 	TIM4_NVIC_init_struct.NVIC_IRQChannel = TIM4_IRQn;
- 8001484:	231e      	movs	r3, #30
- 8001486:	713b      	strb	r3, [r7, #4]
+ 8001482:	231e      	movs	r3, #30
+ 8001484:	713b      	strb	r3, [r7, #4]
 	TIM4_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
- 8001488:	2301      	movs	r3, #1
- 800148a:	71fb      	strb	r3, [r7, #7]
+ 8001486:	2301      	movs	r3, #1
+ 8001488:	71fb      	strb	r3, [r7, #7]
 	TIM4_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x00;
- 800148c:	2300      	movs	r3, #0
- 800148e:	717b      	strb	r3, [r7, #5]
+ 800148a:	2300      	movs	r3, #0
+ 800148c:	717b      	strb	r3, [r7, #5]
 	TIM4_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x00;
- 8001490:	2300      	movs	r3, #0
- 8001492:	71bb      	strb	r3, [r7, #6]
+ 800148e:	2300      	movs	r3, #0
+ 8001490:	71bb      	strb	r3, [r7, #6]
 	NVIC_Init(&TIM4_NVIC_init_struct);
- 8001494:	1d3b      	adds	r3, r7, #4
- 8001496:	4618      	mov	r0, r3
- 8001498:	f7fe fe96 	bl	80001c8 <NVIC_Init>
+ 8001492:	1d3b      	adds	r3, r7, #4
+ 8001494:	4618      	mov	r0, r3
+ 8001496:	f7fe fe97 	bl	80001c8 <NVIC_Init>
 
 	TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
- 800149c:	2201      	movs	r2, #1
- 800149e:	2101      	movs	r1, #1
- 80014a0:	482f      	ldr	r0, [pc, #188]	; (8001560 <init_gpios+0x180>)
- 80014a2:	f7ff fd0b 	bl	8000ebc <TIM_ITConfig>
+ 800149a:	2201      	movs	r2, #1
+ 800149c:	2101      	movs	r1, #1
+ 800149e:	4830      	ldr	r0, [pc, #192]	; (8001560 <init_gpios+0x180>)
+ 80014a0:	f7ff fd0c 	bl	8000ebc <TIM_ITConfig>
 
 
 	/*Configure pins as EXTI*/
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG,ENABLE);
- 80014a6:	2101      	movs	r1, #1
- 80014a8:	f44f 4080 	mov.w	r0, #16384	; 0x4000
- 80014ac:	f7ff fbb2 	bl	8000c14 <RCC_APB2PeriphClockCmd>
+ 80014a4:	2101      	movs	r1, #1
+ 80014a6:	f44f 4080 	mov.w	r0, #16384	; 0x4000
+ 80014aa:	f7ff fbb3 	bl	8000c14 <RCC_APB2PeriphClockCmd>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource6);
- 80014b0:	2106      	movs	r1, #6
- 80014b2:	2002      	movs	r0, #2
- 80014b4:	f7ff fc1a 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014ae:	2106      	movs	r1, #6
+ 80014b0:	2002      	movs	r0, #2
+ 80014b2:	f7ff fc1b 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource7);
- 80014b8:	2107      	movs	r1, #7
- 80014ba:	2004      	movs	r0, #4
- 80014bc:	f7ff fc16 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014b6:	2107      	movs	r1, #7
+ 80014b8:	2004      	movs	r0, #4
+ 80014ba:	f7ff fc17 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource8);
- 80014c0:	2108      	movs	r1, #8
- 80014c2:	2004      	movs	r0, #4
- 80014c4:	f7ff fc12 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014be:	2108      	movs	r1, #8
+ 80014c0:	2004      	movs	r0, #4
+ 80014c2:	f7ff fc13 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource9);
- 80014c8:	2109      	movs	r1, #9
- 80014ca:	2004      	movs	r0, #4
- 80014cc:	f7ff fc0e 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014c6:	2109      	movs	r1, #9
+ 80014c8:	2004      	movs	r0, #4
+ 80014ca:	f7ff fc0f 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource10);
- 80014d0:	210a      	movs	r1, #10
- 80014d2:	2004      	movs	r0, #4
- 80014d4:	f7ff fc0a 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014ce:	210a      	movs	r1, #10
+ 80014d0:	2004      	movs	r0, #4
+ 80014d2:	f7ff fc0b 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource11);
- 80014d8:	210b      	movs	r1, #11
- 80014da:	2004      	movs	r0, #4
- 80014dc:	f7ff fc06 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014d6:	210b      	movs	r1, #11
+ 80014d8:	2004      	movs	r0, #4
+ 80014da:	f7ff fc07 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource12);
- 80014e0:	210c      	movs	r1, #12
- 80014e2:	2004      	movs	r0, #4
- 80014e4:	f7ff fc02 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014de:	210c      	movs	r1, #12
+ 80014e0:	2004      	movs	r0, #4
+ 80014e2:	f7ff fc03 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource13);
- 80014e8:	210d      	movs	r1, #13
- 80014ea:	2004      	movs	r0, #4
- 80014ec:	f7ff fbfe 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014e6:	210d      	movs	r1, #13
+ 80014e8:	2004      	movs	r0, #4
+ 80014ea:	f7ff fbff 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource14);
- 80014f0:	210e      	movs	r1, #14
- 80014f2:	2004      	movs	r0, #4
- 80014f4:	f7ff fbfa 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014ee:	210e      	movs	r1, #14
+ 80014f0:	2004      	movs	r0, #4
+ 80014f2:	f7ff fbfb 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource15);
- 80014f8:	210f      	movs	r1, #15
- 80014fa:	2004      	movs	r0, #4
- 80014fc:	f7ff fbf6 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80014f6:	210f      	movs	r1, #15
+ 80014f8:	2004      	movs	r0, #4
+ 80014fa:	f7ff fbf7 	bl	8000cec <SYSCFG_EXTILineConfig>
 
 
 	//init EXTI
 	EXTI_init_struct.EXTI_Line = EXTI_Line6 | EXTI_Line7 | EXTI_Line8 | EXTI_Line9 | EXTI_Line10 | EXTI_Line11 | EXTI_Line12 | EXTI_Line13 | EXTI_Line14 | EXTI_Line15;
- 8001500:	f64f 73c0 	movw	r3, #65472	; 0xffc0
- 8001504:	60fb      	str	r3, [r7, #12]
+ 80014fe:	f64f 73c0 	movw	r3, #65472	; 0xffc0
+ 8001502:	60fb      	str	r3, [r7, #12]
 	EXTI_init_struct.EXTI_LineCmd = ENABLE;
- 8001506:	2301      	movs	r3, #1
- 8001508:	74bb      	strb	r3, [r7, #18]
+ 8001504:	2301      	movs	r3, #1
+ 8001506:	74bb      	strb	r3, [r7, #18]
 	EXTI_init_struct.EXTI_Mode =  EXTI_Mode_Interrupt;
- 800150a:	2300      	movs	r3, #0
- 800150c:	743b      	strb	r3, [r7, #16]
+ 8001508:	2300      	movs	r3, #0
+ 800150a:	743b      	strb	r3, [r7, #16]
 	EXTI_init_struct.EXTI_Trigger = EXTI_Trigger_Rising;
- 800150e:	2308      	movs	r3, #8
- 8001510:	747b      	strb	r3, [r7, #17]
+ 800150c:	2308      	movs	r3, #8
+ 800150e:	747b      	strb	r3, [r7, #17]
 	EXTI_Init(&EXTI_init_struct);
- 8001512:	f107 030c 	add.w	r3, r7, #12
- 8001516:	4618      	mov	r0, r3
- 8001518:	f7ff f9f8 	bl	800090c <EXTI_Init>
+ 8001510:	f107 030c 	add.w	r3, r7, #12
+ 8001514:	4618      	mov	r0, r3
+ 8001516:	f7ff f9f9 	bl	800090c <EXTI_Init>
 
 	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI9_5_IRQn;
- 800151c:	2317      	movs	r3, #23
- 800151e:	723b      	strb	r3, [r7, #8]
+ 800151a:	2317      	movs	r3, #23
+ 800151c:	723b      	strb	r3, [r7, #8]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 8001520:	230f      	movs	r3, #15
- 8001522:	727b      	strb	r3, [r7, #9]
+ 800151e:	230f      	movs	r3, #15
+ 8001520:	727b      	strb	r3, [r7, #9]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
- 8001524:	230f      	movs	r3, #15
- 8001526:	72bb      	strb	r3, [r7, #10]
+ 8001522:	230f      	movs	r3, #15
+ 8001524:	72bb      	strb	r3, [r7, #10]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
- 8001528:	2301      	movs	r3, #1
- 800152a:	72fb      	strb	r3, [r7, #11]
+ 8001526:	2301      	movs	r3, #1
+ 8001528:	72fb      	strb	r3, [r7, #11]
 	NVIC_Init(&EXTI_NVIC_init_struct);
- 800152c:	f107 0308 	add.w	r3, r7, #8
- 8001530:	4618      	mov	r0, r3
- 8001532:	f7fe fe49 	bl	80001c8 <NVIC_Init>
+ 800152a:	f107 0308 	add.w	r3, r7, #8
+ 800152e:	4618      	mov	r0, r3
+ 8001530:	f7fe fe4a 	bl	80001c8 <NVIC_Init>
 
 
 	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI15_10_IRQn;;
- 8001536:	2328      	movs	r3, #40	; 0x28
- 8001538:	723b      	strb	r3, [r7, #8]
+ 8001534:	2328      	movs	r3, #40	; 0x28
+ 8001536:	723b      	strb	r3, [r7, #8]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 800153a:	230f      	movs	r3, #15
- 800153c:	727b      	strb	r3, [r7, #9]
+ 8001538:	230f      	movs	r3, #15
+ 800153a:	727b      	strb	r3, [r7, #9]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
- 800153e:	230f      	movs	r3, #15
- 8001540:	72bb      	strb	r3, [r7, #10]
+ 800153c:	230f      	movs	r3, #15
+ 800153e:	72bb      	strb	r3, [r7, #10]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
- 8001542:	2301      	movs	r3, #1
- 8001544:	72fb      	strb	r3, [r7, #11]
+ 8001540:	2301      	movs	r3, #1
+ 8001542:	72fb      	strb	r3, [r7, #11]
 	NVIC_Init(&EXTI_NVIC_init_struct);
- 8001546:	f107 0308 	add.w	r3, r7, #8
- 800154a:	4618      	mov	r0, r3
- 800154c:	f7fe fe3c 	bl	80001c8 <NVIC_Init>
+ 8001544:	f107 0308 	add.w	r3, r7, #8
+ 8001548:	4618      	mov	r0, r3
+ 800154a:	f7fe fe3d 	bl	80001c8 <NVIC_Init>
 
 
 
 
 }
- 8001550:	bf00      	nop
- 8001552:	3728      	adds	r7, #40	; 0x28
- 8001554:	46bd      	mov	sp, r7
- 8001556:	bd80      	pop	{r7, pc}
+ 800154e:	bf00      	nop
+ 8001550:	3728      	adds	r7, #40	; 0x28
+ 8001552:	46bd      	mov	sp, r7
+ 8001554:	bd80      	pop	{r7, pc}
+ 8001556:	bf00      	nop
  8001558:	40021000 	.word	0x40021000
  800155c:	40020800 	.word	0x40020800
  8001560:	40000800 	.word	0x40000800
@@ -4018,193 +4019,194 @@ void  init_push_buttons(){
  8001572:	f107 0320 	add.w	r3, r7, #32
  8001576:	4618      	mov	r0, r3
  8001578:	f7ff fad8 	bl	8000b2c <GPIO_StructInit>
-	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_13;
- 800157c:	f44f 5300 	mov.w	r3, #8192	; 0x2000
- 8001580:	623b      	str	r3, [r7, #32]
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3;
+ 800157c:	230f      	movs	r3, #15
+ 800157e:	623b      	str	r3, [r7, #32]
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;					//input
- 8001582:	2300      	movs	r3, #0
- 8001584:	f887 3024 	strb.w	r3, [r7, #36]	; 0x24
+ 8001580:	2300      	movs	r3, #0
+ 8001582:	f887 3024 	strb.w	r3, [r7, #36]	; 0x24
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_25MHz;				//medium
- 8001588:	2301      	movs	r3, #1
- 800158a:	f887 3025 	strb.w	r3, [r7, #37]	; 0x25
-	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;					//pull down
- 800158e:	2300      	movs	r3, #0
- 8001590:	f887 3027 	strb.w	r3, [r7, #39]	; 0x27
+ 8001586:	2301      	movs	r3, #1
+ 8001588:	f887 3025 	strb.w	r3, [r7, #37]	; 0x25
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//pull down
+ 800158c:	2300      	movs	r3, #0
+ 800158e:	f887 3027 	strb.w	r3, [r7, #39]	; 0x27
 	GPIO_Init(GPIOE, &GPIO_InitStructure);
- 8001594:	f107 0320 	add.w	r3, r7, #32
- 8001598:	4619      	mov	r1, r3
- 800159a:	4843      	ldr	r0, [pc, #268]	; (80016a8 <init_push_buttons+0x144>)
- 800159c:	f7ff fa38 	bl	8000a10 <GPIO_Init>
+ 8001592:	f107 0320 	add.w	r3, r7, #32
+ 8001596:	4619      	mov	r1, r3
+ 8001598:	4843      	ldr	r0, [pc, #268]	; (80016a8 <init_push_buttons+0x144>)
+ 800159a:	f7ff fa39 	bl	8000a10 <GPIO_Init>
 
 
 	/*Configure Tim3 for debouncing	 */
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
- 80015a0:	2101      	movs	r1, #1
- 80015a2:	2002      	movs	r0, #2
- 80015a4:	f7ff fb16 	bl	8000bd4 <RCC_APB1PeriphClockCmd>
+ 800159e:	2101      	movs	r1, #1
+ 80015a0:	2002      	movs	r0, #2
+ 80015a2:	f7ff fb17 	bl	8000bd4 <RCC_APB1PeriphClockCmd>
 	TIM_TimeBaseStructInit(&tim3_base_struct);
- 80015a8:	f107 0314 	add.w	r3, r7, #20
- 80015ac:	4618      	mov	r0, r3
- 80015ae:	f7ff fc4b 	bl	8000e48 <TIM_TimeBaseStructInit>
+ 80015a6:	f107 0314 	add.w	r3, r7, #20
+ 80015aa:	4618      	mov	r0, r3
+ 80015ac:	f7ff fc4c 	bl	8000e48 <TIM_TimeBaseStructInit>
 	tim3_base_struct.TIM_ClockDivision = TIM_CKD_DIV1;
- 80015b2:	2300      	movs	r3, #0
- 80015b4:	83bb      	strh	r3, [r7, #28]
+ 80015b0:	2300      	movs	r3, #0
+ 80015b2:	83bb      	strh	r3, [r7, #28]
 	tim3_base_struct.TIM_CounterMode = TIM_CounterMode_Up;
- 80015b6:	2300      	movs	r3, #0
- 80015b8:	82fb      	strh	r3, [r7, #22]
+ 80015b4:	2300      	movs	r3, #0
+ 80015b6:	82fb      	strh	r3, [r7, #22]
 	tim3_base_struct.TIM_Period = MYTIM3_PERIOD;
- 80015ba:	f242 03d0 	movw	r3, #8400	; 0x20d0
- 80015be:	61bb      	str	r3, [r7, #24]
+ 80015b8:	f242 03d0 	movw	r3, #8400	; 0x20d0
+ 80015bc:	61bb      	str	r3, [r7, #24]
 	tim3_base_struct.TIM_Prescaler = myTIM3_PRESCALER;
- 80015c0:	f44f 63fa 	mov.w	r3, #2000	; 0x7d0
- 80015c4:	82bb      	strh	r3, [r7, #20]
+ 80015be:	f44f 63fa 	mov.w	r3, #2000	; 0x7d0
+ 80015c2:	82bb      	strh	r3, [r7, #20]
 	TIM_TimeBaseInit(TIM3, &tim3_base_struct);
- 80015c6:	f107 0314 	add.w	r3, r7, #20
- 80015ca:	4619      	mov	r1, r3
- 80015cc:	4837      	ldr	r0, [pc, #220]	; (80016ac <init_push_buttons+0x148>)
- 80015ce:	f7ff fbcf 	bl	8000d70 <TIM_TimeBaseInit>
+ 80015c4:	f107 0314 	add.w	r3, r7, #20
+ 80015c8:	4619      	mov	r1, r3
+ 80015ca:	4838      	ldr	r0, [pc, #224]	; (80016ac <init_push_buttons+0x148>)
+ 80015cc:	f7ff fbd0 	bl	8000d70 <TIM_TimeBaseInit>
 
 	TIM3_NVIC_init_struct.NVIC_IRQChannel = TIM3_IRQn;
- 80015d2:	231d      	movs	r3, #29
- 80015d4:	713b      	strb	r3, [r7, #4]
+ 80015d0:	231d      	movs	r3, #29
+ 80015d2:	713b      	strb	r3, [r7, #4]
 	TIM3_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
- 80015d6:	2301      	movs	r3, #1
- 80015d8:	71fb      	strb	r3, [r7, #7]
+ 80015d4:	2301      	movs	r3, #1
+ 80015d6:	71fb      	strb	r3, [r7, #7]
 	TIM3_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x00;
- 80015da:	2300      	movs	r3, #0
- 80015dc:	717b      	strb	r3, [r7, #5]
+ 80015d8:	2300      	movs	r3, #0
+ 80015da:	717b      	strb	r3, [r7, #5]
 	TIM3_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x00;
- 80015de:	2300      	movs	r3, #0
- 80015e0:	71bb      	strb	r3, [r7, #6]
+ 80015dc:	2300      	movs	r3, #0
+ 80015de:	71bb      	strb	r3, [r7, #6]
 	NVIC_Init(&TIM3_NVIC_init_struct);
- 80015e2:	1d3b      	adds	r3, r7, #4
- 80015e4:	4618      	mov	r0, r3
- 80015e6:	f7fe fdef 	bl	80001c8 <NVIC_Init>
+ 80015e0:	1d3b      	adds	r3, r7, #4
+ 80015e2:	4618      	mov	r0, r3
+ 80015e4:	f7fe fdf0 	bl	80001c8 <NVIC_Init>
 
 	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
- 80015ea:	2201      	movs	r2, #1
- 80015ec:	2101      	movs	r1, #1
- 80015ee:	482f      	ldr	r0, [pc, #188]	; (80016ac <init_push_buttons+0x148>)
- 80015f0:	f7ff fc64 	bl	8000ebc <TIM_ITConfig>
+ 80015e8:	2201      	movs	r2, #1
+ 80015ea:	2101      	movs	r1, #1
+ 80015ec:	482f      	ldr	r0, [pc, #188]	; (80016ac <init_push_buttons+0x148>)
+ 80015ee:	f7ff fc65 	bl	8000ebc <TIM_ITConfig>
 
 
 	/*Configure pins as EXTI*/
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG,ENABLE);
- 80015f4:	2101      	movs	r1, #1
- 80015f6:	f44f 4080 	mov.w	r0, #16384	; 0x4000
- 80015fa:	f7ff fb0b 	bl	8000c14 <RCC_APB2PeriphClockCmd>
+ 80015f2:	2101      	movs	r1, #1
+ 80015f4:	f44f 4080 	mov.w	r0, #16384	; 0x4000
+ 80015f8:	f7ff fb0c 	bl	8000c14 <RCC_APB2PeriphClockCmd>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource0);
- 80015fe:	2100      	movs	r1, #0
- 8001600:	2004      	movs	r0, #4
- 8001602:	f7ff fb73 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 80015fc:	2100      	movs	r1, #0
+ 80015fe:	2004      	movs	r0, #4
+ 8001600:	f7ff fb74 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource1);
- 8001606:	2101      	movs	r1, #1
- 8001608:	2004      	movs	r0, #4
- 800160a:	f7ff fb6f 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 8001604:	2101      	movs	r1, #1
+ 8001606:	2004      	movs	r0, #4
+ 8001608:	f7ff fb70 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource2);
- 800160e:	2102      	movs	r1, #2
- 8001610:	2004      	movs	r0, #4
- 8001612:	f7ff fb6b 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 800160c:	2102      	movs	r1, #2
+ 800160e:	2004      	movs	r0, #4
+ 8001610:	f7ff fb6c 	bl	8000cec <SYSCFG_EXTILineConfig>
 	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource3);
- 8001616:	2103      	movs	r1, #3
- 8001618:	2004      	movs	r0, #4
- 800161a:	f7ff fb67 	bl	8000cec <SYSCFG_EXTILineConfig>
+ 8001614:	2103      	movs	r1, #3
+ 8001616:	2004      	movs	r0, #4
+ 8001618:	f7ff fb68 	bl	8000cec <SYSCFG_EXTILineConfig>
 
 
 
 	//init EXTI
 	EXTI_init_struct.EXTI_Line = EXTI_Line0 | EXTI_Line1 | EXTI_Line2 | EXTI_Line3;
- 800161e:	230f      	movs	r3, #15
- 8001620:	60fb      	str	r3, [r7, #12]
+ 800161c:	230f      	movs	r3, #15
+ 800161e:	60fb      	str	r3, [r7, #12]
 	EXTI_init_struct.EXTI_LineCmd = ENABLE;
- 8001622:	2301      	movs	r3, #1
- 8001624:	74bb      	strb	r3, [r7, #18]
+ 8001620:	2301      	movs	r3, #1
+ 8001622:	74bb      	strb	r3, [r7, #18]
 	EXTI_init_struct.EXTI_Mode =  EXTI_Mode_Interrupt;
- 8001626:	2300      	movs	r3, #0
- 8001628:	743b      	strb	r3, [r7, #16]
+ 8001624:	2300      	movs	r3, #0
+ 8001626:	743b      	strb	r3, [r7, #16]
 	EXTI_init_struct.EXTI_Trigger = EXTI_Trigger_Rising;
- 800162a:	2308      	movs	r3, #8
- 800162c:	747b      	strb	r3, [r7, #17]
+ 8001628:	2308      	movs	r3, #8
+ 800162a:	747b      	strb	r3, [r7, #17]
 	EXTI_Init(&EXTI_init_struct);
- 800162e:	f107 030c 	add.w	r3, r7, #12
- 8001632:	4618      	mov	r0, r3
- 8001634:	f7ff f96a 	bl	800090c <EXTI_Init>
+ 800162c:	f107 030c 	add.w	r3, r7, #12
+ 8001630:	4618      	mov	r0, r3
+ 8001632:	f7ff f96b 	bl	800090c <EXTI_Init>
 
 	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI0_IRQn;
- 8001638:	2306      	movs	r3, #6
- 800163a:	723b      	strb	r3, [r7, #8]
+ 8001636:	2306      	movs	r3, #6
+ 8001638:	723b      	strb	r3, [r7, #8]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 800163c:	230f      	movs	r3, #15
- 800163e:	727b      	strb	r3, [r7, #9]
+ 800163a:	230f      	movs	r3, #15
+ 800163c:	727b      	strb	r3, [r7, #9]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
- 8001640:	230f      	movs	r3, #15
- 8001642:	72bb      	strb	r3, [r7, #10]
+ 800163e:	230f      	movs	r3, #15
+ 8001640:	72bb      	strb	r3, [r7, #10]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
- 8001644:	2301      	movs	r3, #1
- 8001646:	72fb      	strb	r3, [r7, #11]
+ 8001642:	2301      	movs	r3, #1
+ 8001644:	72fb      	strb	r3, [r7, #11]
 	NVIC_Init(&EXTI_NVIC_init_struct);
- 8001648:	f107 0308 	add.w	r3, r7, #8
- 800164c:	4618      	mov	r0, r3
- 800164e:	f7fe fdbb 	bl	80001c8 <NVIC_Init>
+ 8001646:	f107 0308 	add.w	r3, r7, #8
+ 800164a:	4618      	mov	r0, r3
+ 800164c:	f7fe fdbc 	bl	80001c8 <NVIC_Init>
 
 
 	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI1_IRQn;;
- 8001652:	2307      	movs	r3, #7
- 8001654:	723b      	strb	r3, [r7, #8]
+ 8001650:	2307      	movs	r3, #7
+ 8001652:	723b      	strb	r3, [r7, #8]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 8001656:	230f      	movs	r3, #15
- 8001658:	727b      	strb	r3, [r7, #9]
+ 8001654:	230f      	movs	r3, #15
+ 8001656:	727b      	strb	r3, [r7, #9]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
- 800165a:	230f      	movs	r3, #15
- 800165c:	72bb      	strb	r3, [r7, #10]
+ 8001658:	230f      	movs	r3, #15
+ 800165a:	72bb      	strb	r3, [r7, #10]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
- 800165e:	2301      	movs	r3, #1
- 8001660:	72fb      	strb	r3, [r7, #11]
+ 800165c:	2301      	movs	r3, #1
+ 800165e:	72fb      	strb	r3, [r7, #11]
 	NVIC_Init(&EXTI_NVIC_init_struct);
- 8001662:	f107 0308 	add.w	r3, r7, #8
- 8001666:	4618      	mov	r0, r3
- 8001668:	f7fe fdae 	bl	80001c8 <NVIC_Init>
+ 8001660:	f107 0308 	add.w	r3, r7, #8
+ 8001664:	4618      	mov	r0, r3
+ 8001666:	f7fe fdaf 	bl	80001c8 <NVIC_Init>
 	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI2_IRQn;
- 800166c:	2308      	movs	r3, #8
- 800166e:	723b      	strb	r3, [r7, #8]
+ 800166a:	2308      	movs	r3, #8
+ 800166c:	723b      	strb	r3, [r7, #8]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 8001670:	230f      	movs	r3, #15
- 8001672:	727b      	strb	r3, [r7, #9]
+ 800166e:	230f      	movs	r3, #15
+ 8001670:	727b      	strb	r3, [r7, #9]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
- 8001674:	230f      	movs	r3, #15
- 8001676:	72bb      	strb	r3, [r7, #10]
+ 8001672:	230f      	movs	r3, #15
+ 8001674:	72bb      	strb	r3, [r7, #10]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
- 8001678:	2301      	movs	r3, #1
- 800167a:	72fb      	strb	r3, [r7, #11]
+ 8001676:	2301      	movs	r3, #1
+ 8001678:	72fb      	strb	r3, [r7, #11]
 	NVIC_Init(&EXTI_NVIC_init_struct);
- 800167c:	f107 0308 	add.w	r3, r7, #8
- 8001680:	4618      	mov	r0, r3
- 8001682:	f7fe fda1 	bl	80001c8 <NVIC_Init>
+ 800167a:	f107 0308 	add.w	r3, r7, #8
+ 800167e:	4618      	mov	r0, r3
+ 8001680:	f7fe fda2 	bl	80001c8 <NVIC_Init>
 
 
 	EXTI_NVIC_init_struct.NVIC_IRQChannel = EXTI3_IRQn;;
- 8001686:	2309      	movs	r3, #9
- 8001688:	723b      	strb	r3, [r7, #8]
+ 8001684:	2309      	movs	r3, #9
+ 8001686:	723b      	strb	r3, [r7, #8]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelPreemptionPriority = 0x0F;
- 800168a:	230f      	movs	r3, #15
- 800168c:	727b      	strb	r3, [r7, #9]
+ 8001688:	230f      	movs	r3, #15
+ 800168a:	727b      	strb	r3, [r7, #9]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelSubPriority = 0x0F;
- 800168e:	230f      	movs	r3, #15
- 8001690:	72bb      	strb	r3, [r7, #10]
+ 800168c:	230f      	movs	r3, #15
+ 800168e:	72bb      	strb	r3, [r7, #10]
 	EXTI_NVIC_init_struct.NVIC_IRQChannelCmd = ENABLE;
- 8001692:	2301      	movs	r3, #1
- 8001694:	72fb      	strb	r3, [r7, #11]
+ 8001690:	2301      	movs	r3, #1
+ 8001692:	72fb      	strb	r3, [r7, #11]
 	NVIC_Init(&EXTI_NVIC_init_struct);
- 8001696:	f107 0308 	add.w	r3, r7, #8
- 800169a:	4618      	mov	r0, r3
- 800169c:	f7fe fd94 	bl	80001c8 <NVIC_Init>
+ 8001694:	f107 0308 	add.w	r3, r7, #8
+ 8001698:	4618      	mov	r0, r3
+ 800169a:	f7fe fd95 	bl	80001c8 <NVIC_Init>
 
 
 }
- 80016a0:	bf00      	nop
- 80016a2:	3728      	adds	r7, #40	; 0x28
- 80016a4:	46bd      	mov	sp, r7
- 80016a6:	bd80      	pop	{r7, pc}
+ 800169e:	bf00      	nop
+ 80016a0:	3728      	adds	r7, #40	; 0x28
+ 80016a2:	46bd      	mov	sp, r7
+ 80016a4:	bd80      	pop	{r7, pc}
+ 80016a6:	bf00      	nop
  80016a8:	40021000 	.word	0x40021000
  80016ac:	40000400 	.word	0x40000400
 

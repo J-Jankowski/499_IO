@@ -1,4 +1,4 @@
 initial_ization.c:33:6:init_adc	136	static
 initial_ization.c:190:6:init_gpios	48	static
 initial_ization.c:296:7:init_push_buttons	48	static
-initial_ization.c:390:6:init_lcd	16	static
+initial_ization.c:390:6:init_lcd	40	static
