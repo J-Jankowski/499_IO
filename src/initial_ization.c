@@ -221,10 +221,10 @@ void init_gpios(){
 
 	/*
 	 * C bank pins
-	 * PC12		lfo_other2
+	 * PC6		lfo_other2
 	 */
 	GPIO_StructInit(&GPIO_InitStructure);							//default values
-	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_13;
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_6;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;					//input
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//slow
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//no pull
@@ -311,10 +311,10 @@ void  init_push_buttons(){
 	 * PE3		Menu enter
 	 */
 	GPIO_StructInit(&GPIO_InitStructure);							//default values
-	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_13;
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;					//input
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_25MHz;				//medium
-	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;					//pull down
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//pull down
 	GPIO_Init(GPIOE, &GPIO_InitStructure);
 
 
