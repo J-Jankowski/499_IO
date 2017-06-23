@@ -105,6 +105,8 @@ int main(void)
   init_adc(ADCBuffer);						//initialize ADC, do this last because it starts the timer
   update_selector_state();					// get startup state
 
+
+
   int i = 0;
   int j = 0;
 

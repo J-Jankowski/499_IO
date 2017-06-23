@@ -21,3 +21,6 @@ void init_gpios();
 
 // Initializes the push buttons for screen navigation and exti also sets up tim5 for debouncing
 void  init_push_buttons();
+
+// Initializes the LCD screen SPI communications
+void init_lcd();

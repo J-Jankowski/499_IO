@@ -23,21 +23,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   9 .ARM.attributes 00000030  00000000  00000000  00020020  2**0
                   CONTENTS, READONLY
- 10 .debug_info   00009795  00000000  00000000  00020050  2**0
+ 10 .debug_info   000097bb  00000000  00000000  00020050  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 00001973  00000000  00000000  000297e5  2**0
+ 11 .debug_abbrev 00001973  00000000  00000000  0002980b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_aranges 00000c50  00000000  00000000  0002b158  2**3
+ 12 .debug_aranges 00000c58  00000000  00000000  0002b180  2**3
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000b38  00000000  00000000  0002bda8  2**3
+ 13 .debug_ranges 00000b40  00000000  00000000  0002bdd8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   0000413a  00000000  00000000  0002c8e0  2**0
+ 14 .debug_line   0000414d  00000000  00000000  0002c918  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    00003be9  00000000  00000000  00030a1a  2**0
+ 15 .debug_str    00003bf2  00000000  00000000  00030a65  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .comment      0000007e  00000000  00000000  00034603  2**0
+ 16 .comment      0000007e  00000000  00000000  00034657  2**0
                   CONTENTS, READONLY
- 17 .debug_frame  000033bc  00000000  00000000  00034684  2**2
+ 17 .debug_frame  000033e0  00000000  00000000  000346d8  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -4321,6 +4321,8 @@ int main(void)
  8001744:	f7ff fcfc 	bl	8001140 <init_adc>
   update_selector_state();					// get startup state
  8001748:	f000 fa34 	bl	8001bb4 <update_selector_state>
+
+
 
   int i = 0;
  800174c:	2300      	movs	r3, #0

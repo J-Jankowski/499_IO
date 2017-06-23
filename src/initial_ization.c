@@ -379,3 +379,18 @@ void  init_push_buttons(){
 
 
 }
+
+
+
+
+/*
+ * Initializes the SPI for the LCD Screen PC3 MOSI, PB10 SCK, PC5 chip select active low
+ */
+
+void init_lcd(){
+
+	GPIO_InitTypeDef GPIO_InitStructure;
+
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE); 			//This is already turned on in init gpio's but turn on incase
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC,ENABLE); 			//This is already turned on in init gpio's but turn on incase
+}
