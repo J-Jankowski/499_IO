@@ -99,6 +99,7 @@ int main(void)
 
   /**************************** Run Initialization functions timer for tim2 started in init_adc*****************************/
 
+  menubutton.button=back;					//initializes menubutton state for startup
   init_gpios();								//initialize gpios
   init_push_buttons();						//initialize menu navigation buttons
   init_adc(ADCBuffer);						//initialize ADC, do this last because it starts the timer

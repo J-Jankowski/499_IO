@@ -17,7 +17,8 @@
 #define myTIM2_PRESCALER ((uint16_t)0x03E8)				//want ADC to run every 75ms =13.3Hz board is at 168MHz prescale by 1000
 #define myTIM2_PERIOD ((uint32_t)0x3138)				//so need to count to count to 12600=0x3138 gona change for testing
 #define NUM_CHANNELS 13
-
+#define ACTIVE 1
+#define NOT_ACTIVE 0
 
 typedef enum selector_state
 {
@@ -36,11 +37,18 @@ typedef enum button_pushed
 	enter,
 }button_pushed;
 
+typedef struct
+{
+	button_pushed button;
+	int button_state;
+}button_state;
+
 /******************************************************Global Variables***********************/
 
 
 volatile uint16_t ADCBuffer[NUM_CHANNELS];	//DMA buffer for ADC values
 selector_state lfo_state, vfo_state;		//state variables for selectors
+button_state menubutton;
 
 
 #endif /* MAIN_H_ */

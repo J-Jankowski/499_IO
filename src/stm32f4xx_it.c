@@ -153,6 +153,11 @@ void SysTick_Handler(void)
 void EXTI0_IRQHandler(void){
 	EXTI_ClearITPendingBit(EXTI_Line0);
 
+	if(menubutton.button_state == NOT_ACTIVE){
+		menubutton.button = up;
+		menubutton.button_state = ACTIVE;
+		TIM_Cmd(TIM3, ENABLE);
+	}
 }
 
 
@@ -163,6 +168,11 @@ void EXTI0_IRQHandler(void){
 void EXTI1_IRQHandler(void){
 	EXTI_ClearITPendingBit(EXTI_Line1);
 
+	if(menubutton.button_state == NOT_ACTIVE){
+		menubutton.button = down;
+		menubutton.button_state = ACTIVE;
+		TIM_Cmd(TIM3, ENABLE);
+	}
 }
 
 
@@ -170,9 +180,13 @@ void EXTI1_IRQHandler(void){
  * interrupt handler for back button
  */
 void EXTI2_IRQHandler(void){
-
 	EXTI_ClearITPendingBit(EXTI_Line2);
 
+	if(menubutton.button_state == NOT_ACTIVE){
+		menubutton.button = back;
+		menubutton.button_state = ACTIVE;
+		TIM_Cmd(TIM3, ENABLE);
+	}
 
 }
 
@@ -184,6 +198,11 @@ void EXTI2_IRQHandler(void){
 void EXTI3_IRQHandler(void){
 	EXTI_ClearITPendingBit(EXTI_Line3);
 
+	if(menubutton.button_state == NOT_ACTIVE){
+		menubutton.button = enter;
+		menubutton.button_state = ACTIVE;
+		TIM_Cmd(TIM3, ENABLE);
+	}
 }
 
 //EXTI9_5_IRQn used for selector
@@ -215,7 +234,8 @@ void EXTI15_10_IRQHandler(void){
 void TIM3_IRQHandler(){
 		TIM_Cmd(TIM3, DISABLE);								//stop timer
 		TIM_ClearITPendingBit(TIM3, TIM_IT_Update);			//clear interrupt
-		//some stuff in here havent quite figured it out yet
+		menubutton.button_state = NOT_ACTIVE;
+		//handle button push havent quite figured it out yet
 
 }
 

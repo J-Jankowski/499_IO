@@ -314,7 +314,7 @@ void  init_push_buttons(){
 	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_13;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;					//input
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_25MHz;				//medium
-	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_DOWN;					//pull down
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;					//pull down
 	GPIO_Init(GPIOE, &GPIO_InitStructure);
 
 
