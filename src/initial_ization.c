@@ -387,32 +387,34 @@ void  init_push_buttons(){
  * Initializes the SPI for the LCD Screen PC3 MOSI, PB10 SCK, PC5 chip select active low
  */
 
-void init_lcd(){
+void init_spi(){
 
 	GPIO_InitTypeDef GPIO_InitStructure;
 	SPI_InitTypeDef SPI_InitTypeDefStruct;
 
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE); 			//This is already turned on in init gpio's but turn on incase
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC,ENABLE); 			//This is already turned on in init gpio's but turn on incase
-	RCC_APB1PeriphResetCmd(RCC_APB1Periph_SPI2, ENABLE);			// enable SPI Clock
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);			// enable SPI Clock
 
 	/*
 	 * C bank pins
 	 * PC3		SPI MOSI for LCD screen
-	 * PC5		Chip Select for LCD screen
+	 * PC5		not used right now Chip Select for LCD screen
 	 */
 	GPIO_StructInit(&GPIO_InitStructure);							//default values
 	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_3;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;					//alternate function for SPI
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//medium
-	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//pull down
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;				//medium
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//no pull down
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
 
+	GPIO_StructInit(&GPIO_InitStructure);							//default values
 	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_5;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_OUT;					//CS output
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//medium
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_25MHz;				//medium
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_UP;					//pull down
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
+
 
 	/*
 	 * B bank pins
@@ -420,33 +422,40 @@ void init_lcd(){
 	 */
 	GPIO_StructInit(&GPIO_InitStructure);							//default values
 	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_10;
-	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;					//input
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//medium
-	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				//pull down
+	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;					//alternate function for SPI
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;				//medium
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL ;				//pull down
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
+	/*
+	 * B bank pins
+	 * PB9 		Chip select
+	 */
+//	GPIO_StructInit(&GPIO_InitStructure);							//default values
+//	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_15;
+//	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;					//input
+//	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;				//medium
+//	GPIO_InitStructure.GPIO_PuPd  =   GPIO_PuPd_DOWN;				//pull down
+//	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-	//Init SPI all commented out because not done
-//	SPI_InitTypeDefStruct.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-//	SPI_InitTypeDefStruct.SPI_Mode = SPI_Mode_Master;
-//	SPI_InitTypeDefStruct.SPI_DataSize = SPI_DataSize_8b;
-//	SPI_InitTypeDefStruct.SPI_CPOL = SPI_CPOL_High;
-//	SPI_InitTypeDefStruct.SPI_CPHA = SPI_CPHA_2Edge;
-//	SPI_InitTypeDefStruct.SPI_NSS = SPI_NSS_Soft;
-//	SPI_InitTypeDefStruct.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;
-//	SPI_InitTypeDefStruct.SPI_FirstBit = SPI_FirstBit_MSB;
-//
-//	SPI_Init(SPI1, &SPI_InitTypeDefStruct);
-//
-//
-//	GPIO_PinAFConfig(GPIOA, GPIO_PinSource5, GPIO_AF_SPI1);
-//	GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_SPI1);
-//	GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_SPI1);
-//
-//
-//	GPIO_SetBits(GPIOE, GPIO_Pin_3);
-//
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_SPI2);
+	GPIO_PinAFConfig(GPIOC, GPIO_PinSource3, GPIO_AF_SPI2);
+	//GPIO_PinAFConfig(GPIOB, GPIO_PinSource9, GPIO_AF_SPI2);
 
+	//SPI struct
+	SPI_InitTypeDefStruct.SPI_Direction = SPI_Direction_1Line_Tx;
+	SPI_InitTypeDefStruct.SPI_Mode = SPI_Mode_Master;
+	SPI_InitTypeDefStruct.SPI_DataSize = SPI_DataSize_8b;
+	SPI_InitTypeDefStruct.SPI_CPOL = SPI_CPOL_Low;
+	SPI_InitTypeDefStruct.SPI_CPHA = SPI_CPHA_1Edge;
+	SPI_InitTypeDefStruct.SPI_NSS = SPI_NSS_Soft;
+	SPI_InitTypeDefStruct.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
+	SPI_InitTypeDefStruct.SPI_FirstBit = SPI_FirstBit_MSB;
+	SPI_InitTypeDefStruct.SPI_CRCPolynomial = 7;					//not sure if i need this cause not using CRC
+
+	SPI_Init(SPI2, &SPI_InitTypeDefStruct);
+
+	GPIO_SetBits(GPIOC, GPIO_Pin_5);								//Set chip select high
 	SPI_Cmd(SPI2, ENABLE);
 
 }

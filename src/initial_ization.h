@@ -23,4 +23,4 @@ void init_gpios();
 void  init_push_buttons();
 
 // Initializes the LCD screen SPI communications
-void init_lcd();
+void init_spi();

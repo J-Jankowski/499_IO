@@ -33,6 +33,7 @@ SOFTWARE.
 #include "initial_ization.h"
 #include "user_interface.h"
 #include "main.h"
+#include "lcd.h"
 
 
 /* Private macro */
@@ -103,7 +104,11 @@ int main(void)
   init_gpios();								//initialize gpios
   init_push_buttons();						//initialize menu navigation buttons
   init_adc(ADCBuffer);						//initialize ADC, do this last because it starts the timer
+  init_spi();								//initialize the SPI for LCD
+  lcd_init();								//initializes LCD screen
   update_selector_state();					// get startup state
+
+
 
 
 
