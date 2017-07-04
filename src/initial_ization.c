@@ -399,7 +399,7 @@ void init_spi(){
 	/*
 	 * C bank pins
 	 * PC3		SPI MOSI for LCD screen
-	 * PC5		not used right now Chip Select for LCD screen
+	 * PC5		Chip Select for LCD screen
 	 */
 	GPIO_StructInit(&GPIO_InitStructure);							//default values
 	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_3;
@@ -445,7 +445,7 @@ void init_spi(){
 	//SPI struct
 	SPI_InitTypeDefStruct.SPI_Direction = SPI_Direction_1Line_Tx;
 	SPI_InitTypeDefStruct.SPI_Mode = SPI_Mode_Master;
-	SPI_InitTypeDefStruct.SPI_DataSize = SPI_DataSize_8b;
+	SPI_InitTypeDefStruct.SPI_DataSize = SPI_DataSize_16b;
 	SPI_InitTypeDefStruct.SPI_CPOL = SPI_CPOL_Low;
 	SPI_InitTypeDefStruct.SPI_CPHA = SPI_CPHA_1Edge;
 	SPI_InitTypeDefStruct.SPI_NSS = SPI_NSS_Soft;
@@ -457,5 +457,50 @@ void init_spi(){
 
 	GPIO_SetBits(GPIOC, GPIO_Pin_5);								//Set chip select high
 	SPI_Cmd(SPI2, ENABLE);
+
+}
+
+
+
+void init_parallel(){
+
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE); 			//This is already turned on in init gpio's but turn on incase
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE); 			//This is already turned on in init gpio's but turn on incase
+
+	GPIO_InitTypeDef GPIO_InitStructure;
+
+	/*
+	 * C bank pins
+	 * PC2		LCD Enable
+	 * PC7		LCD R/W
+	 * PC8		LCD DB0
+	 * PC9		LCD DB1
+	 * PC11		LCD DB2
+	 * PC13		LCD DB3
+	 * PC14 	LCD DB4
+	 * PC15		LCD DB5
+	 */
+	GPIO_StructInit(&GPIO_InitStructure);							//default values
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_2 | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_11 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_OUT;					//CS output
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_25MHz;				//medium
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				// no pull up/down
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+	/*
+	 * D bank pins
+	 * PD13		LCD DB6
+	 * PD14		LCD DB7
+	 * PD15		LCD RS
+	 */
+	GPIO_StructInit(&GPIO_InitStructure);							//default values
+	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_OUT;					//CS output
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_25MHz;				//medium
+	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;				// no pull up/down
+	GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+	//set enable high
+	GPIO_SetBits(GPIOC, GPIO_Pin_2);
 
 }

@@ -24,3 +24,6 @@ void  init_push_buttons();
 
 // Initializes the LCD screen SPI communications
 void init_spi();
+
+// Initializes all the GPIOs for parallel communication to LCD screen
+void init_parallel();
