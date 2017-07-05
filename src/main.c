@@ -110,19 +110,9 @@ int main(void)
   update_selector_state();					// get startup state
 
   LCD_CLEAR();
- // LCD_WRITE(55);
-  //lcd_writeline("01234567890123456789",0);
-  LCD_TX(0,0,0);
-  LCD_TX(0,0,1);
-  LCD_TX(0,0,2);
-  LCD_TX(0,0,4);
-  LCD_TX(0,0,8);
-  LCD_TX(0,0,16);
-  LCD_TX(0,0,32);
-  LCD_TX(0,0,64);
-  LCD_TX(0,0,128);
-  LCD_TX(0,1,0);
-  LCD_TX(1,0,0);
+  LCD_WRITE(66);
+  lcd_writeline("01234567890123456789",0);
+
 
 
   int i = 0;

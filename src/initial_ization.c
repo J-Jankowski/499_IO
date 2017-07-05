@@ -501,6 +501,6 @@ void init_parallel(){
 	GPIO_Init(GPIOD, &GPIO_InitStructure);
 
 	//set enable high
-	GPIO_SetBits(GPIOC, GPIO_Pin_2);
+	GPIO_ResetBits(GPIOC, GPIO_Pin_2);
 
 }
