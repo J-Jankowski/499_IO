@@ -7,6 +7,7 @@
 
 #include "user_interface.h"
 #include "stm32f4xx_gpio.h"
+#include "lcd.h"
 #include "main.h"
 
 
@@ -41,3 +42,90 @@ void update_selector_state (){
 		lfo_state = other2;
 	}
 }
+
+void init_state(){
+
+	current_menu_state.menu_state = startup;
+	current_menu_state.cursor_option = 1;
+	current_menu_state.adsr_mod = NO_MOD;
+	current_menu_state.lfo_mod = NO_MOD;
+	current_menu_state.filterst8 = no_filter;
+	current_menu_state.secondary_vco = 0;
+
+}
+
+void handle_enter(){
+
+}
+
+void handle_back(){
+
+}
+
+void handle_up(){
+
+}
+
+void handle_down(){
+
+}
+
+
+
+
+void display_new_menu(){
+	switch(current_menu_state.menu_state){
+
+		case startup:
+			lcd_writeline("     Main  Menu     ", 1);
+			lcd_writeline(" ADSR     Filter    ", 2);
+			lcd_writeline(" LFO      Sec VCO   ", 3);
+			LCD_SETDDRAM(0x14);
+			break;
+
+		case filter:
+			lcd_writeline("    Filter  Menu    ", 1);
+			lcd_writeline(" Off      HighPass  ", 2);
+			lcd_writeline(" LowPass  BandPass  ", 3);
+			LCD_SETDDRAM(0x14);
+			break;
+
+		case ADSR:
+			lcd_writeline("     ADSR  Menu     ", 1);
+			lcd_writeline(" Off      Modulation", 2);
+			lcd_writeline("                    ", 3);
+			LCD_SETDDRAM(0x14);
+			break;
+
+		case ADSR_Mod:
+			lcd_writeline("ADSR Modulation Menu", 1);
+			lcd_writeline(" VCO_AMP  VCO_FREQ  ", 2);
+			lcd_writeline(" LFO_AMP  LFO_FREQ  ", 3);
+			LCD_SETDDRAM(0x14);
+			break;
+
+		case LFO:
+			lcd_writeline("     LFO   Menu     ", 1);
+			lcd_writeline(" OFF      Modulation", 2);
+			lcd_writeline("                    ", 3);
+			LCD_SETDDRAM(0x14);
+			break;
+
+		case LFO_Mod:
+			lcd_writeline("LFO Modulation Menu ", 1);
+			lcd_writeline(" VCO_AMP  VCO_FREQ  ", 2);
+			lcd_writeline(" LFO_AMP  LFO_FREQ  ", 3);
+			LCD_SETDDRAM(0x14);
+			break;
+
+		case secondaryVCO:
+			lcd_writeline(" Secondary VCO Menu ", 1);
+			lcd_writeline(" OFF      ON        ", 2);
+			lcd_writeline("                    ", 3);
+			LCD_SETDDRAM(0x14);
+			break;
+	}
+
+}
+
+

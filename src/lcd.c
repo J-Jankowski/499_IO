@@ -86,14 +86,8 @@ void SPI_TX(int tx){
 		GPIO_ResetBits(GPIOD, GPIO_Pin_14);
 	}
 
-	delay(20);
-
 	//cycle enable bits
 	GPIO_ResetBits(GPIOC, GPIO_Pin_2);
-
-
-
-
 
 	//not using SPI any more gona configure in parallel and use this function to send the instructions/data
 
@@ -122,9 +116,9 @@ int LCD_TX(unsigned int RS,unsigned int RW, unsigned int data)
   int temp = data;
   temp += (RW<<8);
   temp+= (RS<<9);
-  GPIO_ResetBits(GPIOC, GPIO_Pin_5);				//chip select low
+  //GPIO_ResetBits(GPIOC, GPIO_Pin_5);				//chip select low no more chip select with parallel comms
   SPI_TX(temp);
-  GPIO_SetBits(GPIOC, GPIO_Pin_5);				//chip select high
+  //GPIO_SetBits(GPIOC, GPIO_Pin_5);				//chip select high no more chip select with parallel comms
   return temp;
 
 }
@@ -279,6 +273,7 @@ void lcd_init(void)
   //SPI_TX(0b0000001100);//Display on
   LCD_DISPLAY(LCD_ON,LCD_CURSOR,LCD_BLINK);
   delay(0xffff);
+  lcd_writeline("      GUMMYBOX ", 0);
 }
 
 void lcd_writechar(int char_write,int row,int col)

@@ -104,19 +104,58 @@ int main(void)
   init_gpios();								//initialize gpios
   init_push_buttons();						//initialize menu navigation buttons
   init_adc(ADCBuffer);						//initialize ADC, do this last because it starts the timer
-  //init_spi();								//initialize the SPI for LCD
+  //init_spi();								//initialize the SPI for LCD not using SPI any more don't need this
   init_parallel();							//initializes all the GPIO's for parallel LCD communication
   lcd_init();								//initializes LCD screen
   update_selector_state();					// get startup state
+  init_state();								//initialize the global state variable for the menu, filterstate, secondary VCO and modlulation
 
-  LCD_CLEAR();
-  LCD_WRITE(66);
-  lcd_writeline("01234567890123456789",0);
+  int j = 0;
+
+  display_new_menu();
+  current_menu_state.menu_state = filter;
+  display_new_menu();
+
+  current_menu_state.menu_state = ADSR;
+  display_new_menu();
+
+  current_menu_state.menu_state = ADSR_Mod;
+  display_new_menu();
+
+  current_menu_state.menu_state = LFO;
+  display_new_menu();
+
+  current_menu_state.menu_state = LFO_Mod;
+  display_new_menu();
+
+   current_menu_state.menu_state = secondaryVCO;
+   display_new_menu();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
   int i = 0;
-  int j = 0;
+
 
   /* Infinite loop */
   while (1)

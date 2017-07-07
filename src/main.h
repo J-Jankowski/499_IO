@@ -34,14 +34,59 @@ typedef enum button_pushed
 	up,
 	down,
 	back,
-	enter,
+	enter
 }button_pushed;
 
+typedef enum primary_menu
+{
+	startup,
+	filter,
+	ADSR,
+	LFO,
+	secondaryVCO,
+	ADSR_Mod,
+	LFO_Mod
+}primary_menu;
+
+typedef enum filter_state
+{
+	no_filter,
+	highpass,
+	lowpass,
+	bandpass
+}filter_state;
+
+typedef enum modulation_state
+{
+	NO_MOD,
+	VCO_freq,
+	VCO_amp,
+	FILTER_freq
+}modulation_state;
+
+
+/*
+ * Button state used for button debouncing
+ */
 typedef struct
 {
 	button_pushed button;
 	int button_state;
 }button_state;
+
+/*
+ * Struct for menu state machine keeps track of what menu and where the cursor is
+ */
+typedef struct
+{
+	primary_menu menu_state;					//which menu
+	unsigned int cursor_option;					//where is cursor pointing
+	modulation_state lfo_mod;					//What is LFO modulating
+	modulation_state adsr_mod;					//what is ADSR modulating
+	filter_state filterst8;						//what is filter modulating
+	unsigned int secondary_vco;					//is the secondary VCO on
+}menu_state;
+
 
 /******************************************************Global Variables***********************/
 
@@ -49,6 +94,6 @@ typedef struct
 volatile uint16_t ADCBuffer[NUM_CHANNELS];	//DMA buffer for ADC values
 selector_state lfo_state, vfo_state;		//state variables for selectors
 button_state menubutton;
-
+menu_state current_menu_state;
 
 #endif /* MAIN_H_ */
