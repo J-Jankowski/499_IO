@@ -270,6 +270,7 @@ void handle_enter(){
 				display_new_menu();
 				break;
 		}
+
 	}else if(current_menu_state.menu_state == LFO_Mod){
 		switch(current_menu_state.cursor_option){
 			case 0:
