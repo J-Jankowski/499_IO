@@ -59,9 +59,13 @@ typedef enum filter_state
 typedef enum modulation_state
 {
 	NO_MOD,
-	VCO_freq,
-	VCO_amp,
-	FILTER_freq
+	VCOfreq,
+	VCOamp,
+	LFOfreq,
+	LFOamp,
+	FILTER_freq,
+	DualMode_LFO,
+	DualMode_VCO
 }modulation_state;
 
 

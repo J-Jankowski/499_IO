@@ -54,29 +54,463 @@ void init_state(){
 
 }
 
-void handle_enter(){
 
+
+void handle_enter(){
+	if(current_menu_state.menu_state == startup){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.menu_state = ADSR;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 1:
+				current_menu_state.menu_state = filter;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 2:
+				current_menu_state.menu_state = LFO;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 3:
+				current_menu_state.menu_state = secondaryVCO;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 4:														// should never be here so this is error handling
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+		}
+
+	}else if(current_menu_state.menu_state == filter){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.filterst8 = no_filter;
+				display_new_menu();
+				break;
+
+			case 1:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.filterst8 = highpass;
+				display_new_menu();
+				break;
+
+			case 2:
+				current_menu_state.menu_state = lowpass;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.filterst8 = no_filter;
+				display_new_menu();
+				break;
+
+			case 3:
+				current_menu_state.menu_state = bandpass;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.filterst8 = no_filter;
+				display_new_menu();
+				break;
+
+			case 4:														// should never be here so this is error handling
+				current_menu_state.menu_state = filter;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+		}
+
+	}else if(current_menu_state.menu_state == ADSR){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.adsr_mod = NO_MOD;
+				display_new_menu();
+				break;
+
+			case 1:
+				current_menu_state.menu_state = ADSR_Mod;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 2:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.adsr_mod = DualMode_VCO;
+				display_new_menu();
+				break;
+
+			case 3:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.adsr_mod = DualMode_LFO;
+				display_new_menu();
+				break;
+
+			case 4:														// should never be here so this is error handling
+				current_menu_state.menu_state = ADSR;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+		}
+
+	}else if(current_menu_state.menu_state == LFO){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.lfo_mod = NO_MOD;
+				display_new_menu();
+				break;
+
+			case 1:
+				current_menu_state.menu_state = LFO_Mod;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 2:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.lfo_mod = DualMode_VCO;
+				display_new_menu();
+				break;
+
+			case 3:														// should never be here so this is error handling
+				current_menu_state.menu_state = LFO;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 4:														// should never be here so this is error handling
+				current_menu_state.menu_state = LFO;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+		}
+
+	}else if(current_menu_state.menu_state == secondaryVCO){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.secondary_vco = 0;
+				display_new_menu();
+				break;
+
+			case 1:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.secondary_vco = 1;
+				display_new_menu();
+				break;
+
+			case 2:														// should never be here so this is error handling
+				current_menu_state.menu_state = secondaryVCO;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 3:														// should never be here so this is error handling
+				current_menu_state.menu_state = secondaryVCO;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 4:														// should never be here so this is error handling
+				current_menu_state.menu_state = secondaryVCO;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+		}
+
+	}else if(current_menu_state.menu_state == ADSR_Mod){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.adsr_mod = VCOamp;
+				display_new_menu();
+				break;
+
+			case 1:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.adsr_mod = VCOfreq;
+				display_new_menu();
+				break;
+
+			case 2:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.adsr_mod = LFOamp;
+				display_new_menu();
+				break;
+
+			case 3:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.adsr_mod = LFOfreq;
+				display_new_menu();
+				break;
+
+			case 4:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.adsr_mod = FILTER_freq;
+				display_new_menu();
+				break;
+		}
+	}else if(current_menu_state.menu_state == LFO_Mod){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.lfo_mod = VCOamp;
+				display_new_menu();
+				break;
+
+			case 1:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.lfo_mod = VCOfreq;
+				display_new_menu();
+				break;
+
+			case 2:
+				current_menu_state.menu_state = startup;
+				current_menu_state.cursor_option = 0;
+				current_menu_state.lfo_mod = FILTER_freq;
+				display_new_menu();
+				break;
+
+
+			case 3:														// should never be here so this is error handling
+				current_menu_state.menu_state = LFO_Mod;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+
+			case 4:														// should never be here so this is error handling
+				current_menu_state.menu_state = LFO_Mod;
+				current_menu_state.cursor_option = 0;
+				display_new_menu();
+				break;
+		}
+	}
 }
 
 void handle_back(){
 
+	if(current_menu_state.menu_state == startup){
+		current_menu_state.cursor_option = 0;
+
+	}else if(current_menu_state.menu_state == ADSR_Mod){
+		current_menu_state.menu_state = ADSR;
+		current_menu_state.cursor_option = 0;
+		display_new_menu();
+
+	}else if(current_menu_state.menu_state == LFO_Mod){
+		current_menu_state.menu_state = LFO;
+		current_menu_state.cursor_option = 0;
+		display_new_menu();
+
+	}else{
+		current_menu_state.menu_state = startup;
+		current_menu_state.cursor_option = 0;
+		display_new_menu();
+
+	}
 }
+
+
 
 void handle_up(){
+	if(current_menu_state.menu_state == LFO){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.cursor_option = 1;
+				LCD_SETDDRAM(0x1D);
+				break;
 
+			case 1:
+				current_menu_state.cursor_option = 2;
+				LCD_SETDDRAM(0x54);
+				break;
+
+			case 2:
+				current_menu_state.cursor_option = 0;
+				LCD_SETDDRAM(0x14);
+				break;
+		}
+
+	}else if(current_menu_state.menu_state == secondaryVCO){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.cursor_option = 1;
+				LCD_SETDDRAM(0x1D);
+				break;
+
+			case 1:
+				current_menu_state.cursor_option = 0;
+				LCD_SETDDRAM(0x14);
+				break;
+		}
+
+	}else if(current_menu_state.menu_state == ADSR_Mod ){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.cursor_option = 1;
+				LCD_SETDDRAM(0x49);
+				break;
+
+			case 1:
+				current_menu_state.cursor_option = 2;
+				LCD_SETDDRAM(0x14);
+				break;
+
+			case 2:
+				current_menu_state.cursor_option = 3;
+				LCD_SETDDRAM(0x1D);
+				break;
+
+			case 3:
+				current_menu_state.cursor_option = 4;
+				LCD_SETDDRAM(0x54);
+				break;
+
+			case 4:
+				current_menu_state.cursor_option = 0;
+				LCD_SETDDRAM(0x40);
+				break;
+		}
+
+	}else{
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.cursor_option = 1;
+				LCD_SETDDRAM(0x1D);
+				break;
+
+			case 1:
+				current_menu_state.cursor_option = 2;
+				LCD_SETDDRAM(0x54);
+				break;
+
+			case 2:
+				current_menu_state.cursor_option = 3;
+				LCD_SETDDRAM(0x5D);
+				break;
+
+			case 3:
+				current_menu_state.cursor_option = 0;
+				LCD_SETDDRAM(0x14);
+				break;
+		}
+	}
 }
+
 
 void handle_down(){
+	if(current_menu_state.menu_state == LFO){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.cursor_option = 2;
+				LCD_SETDDRAM(0x54);
+				break;
 
+			case 1:
+				current_menu_state.cursor_option = 0;
+				LCD_SETDDRAM(0x14);
+				break;
+
+			case 2:
+				current_menu_state.cursor_option = 1;
+				LCD_SETDDRAM(0x1D);
+				break;
+			}
+
+	}else if(current_menu_state.menu_state == secondaryVCO){
+			switch(current_menu_state.cursor_option){
+				case 0:
+					current_menu_state.cursor_option = 1;
+					LCD_SETDDRAM(0x1D);
+					break;
+
+				case 1:
+					current_menu_state.cursor_option = 0;
+					LCD_SETDDRAM(0x14);
+					break;
+			}
+
+	}else if(current_menu_state.menu_state == ADSR_Mod ){
+		switch(current_menu_state.cursor_option){
+			case 0:
+				current_menu_state.cursor_option = 4;
+				LCD_SETDDRAM(0x54);
+				break;
+
+			case 1:
+				current_menu_state.cursor_option = 0;
+				LCD_SETDDRAM(0x40);
+				break;
+
+			case 2:
+				current_menu_state.cursor_option = 1;
+				LCD_SETDDRAM(0x49);
+				break;
+
+			case 3:
+				current_menu_state.cursor_option = 2;
+				LCD_SETDDRAM(0x14);
+				break;
+
+			case 4:
+				current_menu_state.cursor_option = 3;
+				LCD_SETDDRAM(0x1D);
+				break;
+		}
+
+	}else{
+		switch(current_menu_state.cursor_option){
+		case 0:
+			current_menu_state.cursor_option = 3;
+			LCD_SETDDRAM(0x5D);
+			break;
+
+		case 1:
+			current_menu_state.cursor_option = 0;
+			LCD_SETDDRAM(0x14);
+			break;
+
+		case 2:
+			current_menu_state.cursor_option = 1;
+			LCD_SETDDRAM(0x1D);
+			break;
+
+		case 3:
+			current_menu_state.cursor_option = 2;
+			LCD_SETDDRAM(0x54);
+			break;
+		}
+	}
 }
 
-
-
-
 void display_new_menu(){
+
 	switch(current_menu_state.menu_state){
 
 		case startup:
+			lcd_writeline("      GUMMYBOX      ", 0);
 			lcd_writeline("     Main  Menu     ", 1);
 			lcd_writeline(" ADSR     Filter    ", 2);
 			lcd_writeline(" LFO      Sec VCO   ", 3);
@@ -84,6 +518,7 @@ void display_new_menu(){
 			break;
 
 		case filter:
+			lcd_writeline("      GUMMYBOX      ", 0);
 			lcd_writeline("    Filter  Menu    ", 1);
 			lcd_writeline(" Off      HighPass  ", 2);
 			lcd_writeline(" LowPass  BandPass  ", 3);
@@ -91,41 +526,44 @@ void display_new_menu(){
 			break;
 
 		case ADSR:
+			lcd_writeline("      GUMMYBOX      ", 0);
 			lcd_writeline("     ADSR  Menu     ", 1);
-			lcd_writeline(" Off      Modulation", 2);
-			lcd_writeline("                    ", 3);
+			lcd_writeline(" Off      ON        ", 2);
+			lcd_writeline(" DualVCO  DualLFO   ", 3);
 			LCD_SETDDRAM(0x14);
 			break;
 
 		case ADSR_Mod:
-			lcd_writeline("ADSR Modulation Menu", 1);
-			lcd_writeline(" VCO_AMP  VCO_FREQ  ", 2);
-			lcd_writeline(" LFO_AMP  LFO_FREQ  ", 3);
-			LCD_SETDDRAM(0x14);
+			lcd_writeline("ADSR Modulation Menu", 0);
+			lcd_writeline(" VCO_AMP  VCO_FREQ  ", 1);
+			lcd_writeline(" LFO_AMP  LFO_FREQ  ", 2);
+			lcd_writeline(" Filter_Freq        ", 3);
+			LCD_SETDDRAM(0x40);
 			break;
 
 		case LFO:
+			lcd_writeline("      GUMMYBOX      ", 0);
 			lcd_writeline("     LFO   Menu     ", 1);
-			lcd_writeline(" OFF      Modulation", 2);
-			lcd_writeline("                    ", 3);
+			lcd_writeline(" OFF      ON        ", 2);
+			lcd_writeline(" DualVCO            ", 3);
 			LCD_SETDDRAM(0x14);
 			break;
 
 		case LFO_Mod:
+			lcd_writeline("      GUMMYBOX      ", 0);
 			lcd_writeline("LFO Modulation Menu ", 1);
 			lcd_writeline(" VCO_AMP  VCO_FREQ  ", 2);
-			lcd_writeline(" LFO_AMP  LFO_FREQ  ", 3);
+			lcd_writeline(" Filter_Freq        ", 3);
 			LCD_SETDDRAM(0x14);
 			break;
 
 		case secondaryVCO:
+			lcd_writeline("      GUMMYBOX      ", 0);
 			lcd_writeline(" Secondary VCO Menu ", 1);
 			lcd_writeline(" OFF      ON        ", 2);
 			lcd_writeline("                    ", 3);
 			LCD_SETDDRAM(0x14);
 			break;
+		}
+
 	}
-
-}
-
-

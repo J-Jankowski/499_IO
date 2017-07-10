@@ -109,27 +109,8 @@ int main(void)
   lcd_init();								//initializes LCD screen
   update_selector_state();					// get startup state
   init_state();								//initialize the global state variable for the menu, filterstate, secondary VCO and modlulation
-
-  int j = 0;
-
-  display_new_menu();
-  current_menu_state.menu_state = filter;
   display_new_menu();
 
-  current_menu_state.menu_state = ADSR;
-  display_new_menu();
-
-  current_menu_state.menu_state = ADSR_Mod;
-  display_new_menu();
-
-  current_menu_state.menu_state = LFO;
-  display_new_menu();
-
-  current_menu_state.menu_state = LFO_Mod;
-  display_new_menu();
-
-   current_menu_state.menu_state = secondaryVCO;
-   display_new_menu();
 
 
 
@@ -154,7 +135,6 @@ int main(void)
 
 
 
-  int i = 0;
 
 
   /* Infinite loop */
@@ -163,7 +143,7 @@ int main(void)
 
 
 	  // Waste some time
-	  for (j = 0; j < 5000000; j++){
+	  for (int j = 0; j < 5000000; j++){
 	  }
 
 	//used for testing wave selectors

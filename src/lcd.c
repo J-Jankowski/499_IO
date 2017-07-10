@@ -242,15 +242,6 @@ void LCD_WRITE(int data)
 
 void lcd_init(void)
 {
-//	SPI_DataSizeConfig(SPI2, SPI_DataSize_16b);			//Set to 16 bit to get through the initialization
-//
-//	SPI_TX(0x002C);										//function set europe 2 and 8 bit
-//	SPI_TX(0x000C);										//Display on cursor off bloinking off
-//	SPI_TX(0x0007);										//entry mode set to autoincrement
-//	SPI_TX(0x0001);										//clear screen
-//	SPI_TX(0x0002);										//return home
-//	SPI_TX(0x02FF);										//write something
-
 
   //SPI_TX(0b0000000001);//Clear Display
   LCD_CLEAR();
@@ -273,7 +264,7 @@ void lcd_init(void)
   //SPI_TX(0b0000001100);//Display on
   LCD_DISPLAY(LCD_ON,LCD_CURSOR,LCD_BLINK);
   delay(0xffff);
-  lcd_writeline("      GUMMYBOX ", 0);
+  lcd_writeline("      GUMMYBOX      ", 0);
 }
 
 void lcd_writechar(int char_write,int row,int col)

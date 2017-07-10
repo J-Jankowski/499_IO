@@ -25,6 +25,5 @@ void handle_down();
 
 void display_new_menu();
 
-void display_move_cursor();
 
 
