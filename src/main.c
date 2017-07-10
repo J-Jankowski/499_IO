@@ -114,8 +114,7 @@ int main(void)
 
 
 
-
-
+int temp;
 
 
 
@@ -146,24 +145,29 @@ int main(void)
 	  for (int j = 0; j < 5000000; j++){
 	  }
 
-	//used for testing wave selectors
-	testlfo = lfo_state;
-	testvfo = vfo_state;
+//	//used for testing wave selectors
+//	testlfo = lfo_state;
+//	testvfo = vfo_state;
+//
+//	//used for testing ADC
+//	vfo_amp = ADCBuffer[0];
+//	vfo_freq = ADCBuffer[1];
+//	lfo_amp = ADCBuffer[2];
+//	lfo_freq = ADCBuffer[3];
+//	volume = ADCBuffer[4];
+//	env_attack = ADCBuffer[5];
+//	env_decay = ADCBuffer[6];
+//	env_sustain = ADCBuffer[7];
+//	env_release = ADCBuffer[8];
+//	fc_low = ADCBuffer[9];
+//	fc_high = ADCBuffer[10];
+//	fc_resonance = ADCBuffer[11];
+//	gain = ADCBuffer[12];
 
-	//used for testing ADC
-	vfo_amp = ADCBuffer[0];
-	vfo_freq = ADCBuffer[1];
-	lfo_amp = ADCBuffer[2];
-	lfo_freq = ADCBuffer[3];
-	volume = ADCBuffer[4];
-	env_attack = ADCBuffer[5];
-	env_decay = ADCBuffer[6];
-	env_sustain = ADCBuffer[7];
-	env_release = ADCBuffer[8];
-	fc_low = ADCBuffer[9];
-	fc_high = ADCBuffer[10];
-	fc_resonance = ADCBuffer[11];
-	gain = ADCBuffer[12];
+	temp = current_menu_state.filterst8;
+	temp = current_menu_state.lfo_mod;
+	temp = current_menu_state.adsr_mod;
+	temp = current_menu_state.secondary_vco;
 
   }
 }

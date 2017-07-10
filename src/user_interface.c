@@ -107,16 +107,16 @@ void handle_enter(){
 				break;
 
 			case 2:
-				current_menu_state.menu_state = lowpass;
+				current_menu_state.menu_state = startup;
 				current_menu_state.cursor_option = 0;
-				current_menu_state.filterst8 = no_filter;
+				current_menu_state.filterst8 = lowpass;
 				display_new_menu();
 				break;
 
 			case 3:
-				current_menu_state.menu_state = bandpass;
+				current_menu_state.menu_state = startup;
 				current_menu_state.cursor_option = 0;
-				current_menu_state.filterst8 = no_filter;
+				current_menu_state.filterst8 = bandpass;
 				display_new_menu();
 				break;
 
