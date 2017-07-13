@@ -114,7 +114,7 @@ int main(void)
 
 
 
-int temp;
+  menu_state temp;
 
 
 
@@ -164,10 +164,7 @@ int temp;
 //	fc_resonance = ADCBuffer[11];
 //	gain = ADCBuffer[12];
 
-	temp = current_menu_state.filterst8;
-	temp = current_menu_state.lfo_mod;
-	temp = current_menu_state.adsr_mod;
-	temp = current_menu_state.secondary_vco;
+	  temp = current_menu_state;
 
   }
 }

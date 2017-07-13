@@ -25,5 +25,6 @@ void handle_down();
 
 void display_new_menu();
 
+void curser_start();
 
 

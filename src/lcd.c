@@ -250,7 +250,7 @@ void lcd_init(void)
   LCD_FUNCTION(LCD_8BIT,LCD_EUROPE2);
   delay(0xffff);
   //SPI_TX(0b0000001011);//Display off
-  LCD_DISPLAY(LCD_OFF,LCD_CURSOR,LCD_BLINK);
+  LCD_DISPLAY(LCD_OFF,LCD_NOCURSOR,LCD_BLINK);
   delay(0xffff);
   //SPI_TX(0b0000000001);//Clear Display
   LCD_CLEAR();
@@ -262,7 +262,7 @@ void lcd_init(void)
   LCD_HOME();
   delay(0xffff);
   //SPI_TX(0b0000001100);//Display on
-  LCD_DISPLAY(LCD_ON,LCD_CURSOR,LCD_BLINK);
+  LCD_DISPLAY(LCD_ON,LCD_NOCURSOR,LCD_BLINK);
   delay(0xffff);
   lcd_writeline("      GUMMYBOX      ", 0);
 }

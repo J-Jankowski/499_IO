@@ -10,10 +10,10 @@
 
 // *****************************DEFINITIONS******************************
 
-#define	MYTIM3_PERIOD ((uint16_t)0x20D0)				// button limiting timer runs for 100ms
-#define myTIM3_PRESCALER ((uint32_t)0x7D0)				// so need to count to 1680000/2000=8400=0x20D0
-#define	MYTIM4_PERIOD ((uint16_t)0x1068)				// debouncing timer runs for 50ms
-#define myTIM4_PRESCALER ((uint32_t)0x7D0)				// so need to count to 8400000/2000=4200=0x1068
+#define	MYTIM3_PERIOD ((uint16_t)0x396C)				// button limiting timer runs for 175ms
+#define myTIM3_PRESCALER ((uint32_t)0x7D0)				// so need to count to 29400000/2000=14700=0x396C
+#define	MYTIM4_PERIOD ((uint16_t)0x396C)				// debouncing timer runs for 150ms
+#define myTIM4_PRESCALER ((uint32_t)0x7D0)				// so need to count to 25200000/2000=12600=0x3138
 #define myTIM2_PRESCALER ((uint16_t)0x03E8)				//want ADC to run every 75ms =13.3Hz board is at 168MHz prescale by 1000
 #define myTIM2_PERIOD ((uint32_t)0x3138)				//so need to count to count to 12600=0x3138 gona change for testing
 #define NUM_CHANNELS 13
