@@ -69,7 +69,7 @@ void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]){
 	//GPIO_Pin_4	VCO-Volume
 	//GPIO_Pin_5	ENVELOPE-Attack
 	//GPIO_Pin_6	ENVELOPE-decay
-	//GPIO_Pin_7	ENVELOPE-Sustain
+	//GPIO_Pin_7	ENVELOPE-Sustain-time
 	GPIO_StructInit(&GPIO_InitStructure);
 	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 |GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AIN;
@@ -87,9 +87,10 @@ void init_adc(volatile uint16_t ADCBuffer[NUM_CHANNELS]){
 	GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-	//C bank pins//GPIO_Pin_0	FILTER-FreqHigh
+	//C bank pins//GPIO_Pin_0
+	//GPIO_Pin_0	ENVELOPE blsnk_len
 	//GPIO_Pin_1	FILTER-FreqResonance
-	//GPIO_Pin_4	FILTER-FreqGain
+	//GPIO_Pin_4	ENVELOPE-sustain-amp
 	GPIO_StructInit(&GPIO_InitStructure);
 	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_4;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AIN;
