@@ -83,15 +83,15 @@ int main(void)
   uint16_t vfo_freq = ADCBuffer[1];
   uint16_t lfo_amp = ADCBuffer[2];
   uint16_t lfo_freq = ADCBuffer[3];
-  uint16_t volume = ADCBuffer[4];
-  uint16_t env_attack = ADCBuffer[5];
-  uint16_t env_decay = ADCBuffer[6];
-  uint16_t env_sustain = ADCBuffer[7];
-  uint16_t env_release = ADCBuffer[8];
-  uint16_t fc_low = ADCBuffer[9];
-  uint16_t fc_high = ADCBuffer[10];
-  uint16_t fc_resonance = ADCBuffer[11];
-  uint16_t gain = ADCBuffer[12];
+  uint16_t env_attack = ADCBuffer[4];
+  uint16_t env_decay = ADCBuffer[5];
+  uint16_t env_sustain = ADCBuffer[6];
+  uint16_t env_release = ADCBuffer[7];
+  uint16_t fc_low = ADCBuffer[8];
+  uint16_t fc_high = ADCBuffer[9];
+  uint16_t fc_resonance = ADCBuffer[10];
+  uint16_t gain = ADCBuffer[11];
+  uint16_t Volume = ADCBuffer[12];
 
 /************************************************************************************************************/
 
@@ -135,7 +135,6 @@ int main(void)
 
 
 
-
   /* Infinite loop */
   while (1)
   {
@@ -152,9 +151,9 @@ int main(void)
 //	//used for testing ADC
 //	vfo_amp = ADCBuffer[0];
 //	vfo_freq = ADCBuffer[1];
-//	lfo_amp = ADCBuffer[2];
-//	lfo_freq = ADCBuffer[3];
-//	volume = ADCBuffer[4];
+	lfo_amp = ADCBuffer[2];
+	lfo_freq = ADCBuffer[3];
+	Volume = ADCBuffer[12];
 //	env_attack = ADCBuffer[5];
 //	env_decay = ADCBuffer[6];
 //	env_sustain = ADCBuffer[7];
